@@ -8,7 +8,7 @@
                 </a> --}}
             </li>
             <li class="nav-item theme-text">
-                <a href="{{ asset('clientes/admin/dashboard') }}" class="nav-link"> AUTOFUSSION </a>
+                <a href="{{ asset('clientes/admin/dashboard') }}" class="nav-link"> GLOUCOMA </a>
             </li>
         </ul>
 
