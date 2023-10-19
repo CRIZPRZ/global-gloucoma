@@ -8,3 +8,4 @@ Route::middleware(['auth'])->name('admin.')->group(function () {
     Route::get('servers', [App\Http\Controllers\Admin\ServerController::class ,'index'])->name('server');
 
 });
+// asd
