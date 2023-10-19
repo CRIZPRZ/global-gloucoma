@@ -19,49 +19,56 @@ class RolesAndPermissionSeeder extends Seeder
         app()['cache']->forget('spatie.permission.cache');
 
         // PERMISSION SERVERS
-        Permission::create(['name' => 'read server']);
-        Permission::create(['name' => 'create server']);
-        Permission::create(['name' => 'update server']);
-        Permission::create(['name' => 'destroy server']);
+        Permission::create(['name' => 'read config server', 'module' => 'configuracion servidores']);
+        Permission::create(['name' => 'create config server', 'module' => 'configuracion servidores']);
+        Permission::create(['name' => 'update config server', 'module' => 'configuracion servidores']);
+        Permission::create(['name' => 'destroy config server', 'module' => 'configuracion servidores']);
         // PERMISSION QUOTES
-        Permission::create(['name' => 'read quotes']);
-        Permission::create(['name' => 'create quotes']);
-        Permission::create(['name' => 'update quotes']);
-        Permission::create(['name' => 'destroy quotes']);
+        Permission::create(['name' => 'read config quotes', 'module' => 'configuracion citas']);
+        Permission::create(['name' => 'create config quotes', 'module' => 'configuracion citas']);
+        Permission::create(['name' => 'update config quotes', 'module' => 'configuracion citas']);
+        Permission::create(['name' => 'destroy config quotes', 'module' => 'configuracion citas']);
         // PERMISSION USERS
-        Permission::create(['name' => 'read users']);
-        Permission::create(['name' => 'create users']);
-        Permission::create(['name' => 'update users']);
-        Permission::create(['name' => 'destroy users']);
-        // PERMISSION USERS
-        Permission::create(['name' => 'read users']);
-        Permission::create(['name' => 'create users']);
-        Permission::create(['name' => 'update users']);
-        Permission::create(['name' => 'destroy users']);
+        Permission::create(['name' => 'read config users', 'module' => 'configuracion usuarios']);
+        Permission::create(['name' => 'create config users', 'module' => 'configuracion usuarios']);
+        Permission::create(['name' => 'update config users', 'module' => 'configuracion usuarios']);
+        Permission::create(['name' => 'destroy config users', 'module' => 'configuracion usuarios']);
+
         // PERMISSION PRODUCTS
-        Permission::create(['name' => 'read products']);
-        Permission::create(['name' => 'create products']);
-        Permission::create(['name' => 'update products']);
-        Permission::create(['name' => 'destroy products']);
-        // PERMISSION NOTAS DE VENTA
-        Permission::create(['name' => 'read sale notes']);
-        Permission::create(['name' => 'create sale notes']);
-        Permission::create(['name' => 'update sale notes']);
-        Permission::create(['name' => 'destroy sale notes']);
-         // PERMISSION VENTA
-         Permission::create(['name' => 'read sale']);
-         Permission::create(['name' => 'create sale']);
-         Permission::create(['name' => 'update sale']);
-         Permission::create(['name' => 'destroy sale']);
-          // PERMISSION PAYMENTS
-        Permission::create(['name' => 'read payments']);
-        Permission::create(['name' => 'create payments']);
-        Permission::create(['name' => 'update payments']);
-        Permission::create(['name' => 'destroy payments']);
+        Permission::create(['name' => 'read products', 'module' => 'productos']);
+        Permission::create(['name' => 'create products', 'module' => 'productos']);
+        Permission::create(['name' => 'update products', 'module' => 'productos']);
+        Permission::create(['name' => 'destroy products', 'module' => 'productos']);
+        // PERMISSION PATIENTS
+        Permission::create(['name' => 'read patient', 'module' => 'pacientes']);
+        Permission::create(['name' => 'create patient', 'module' => 'pacientes']);
+        Permission::create(['name' => 'update patient', 'module' => 'pacientes']);
+        Permission::create(['name' => 'destroy patient', 'module' => 'pacientes']);
+        // PERMISSION QUOTES
+        Permission::create(['name' => 'read quotes', 'module' => 'notas']);
+        Permission::create(['name' => 'create quotes', 'module' => 'notas']);
+        Permission::create(['name' => 'update quotes', 'module' => 'notas']);
+        Permission::create(['name' => 'destroy quotes', 'module' => 'notas']);
+        // PERMISSION QUOTES
+        Permission::create(['name' => 'read sales notes', 'module' => 'notas de ventas']);
+        Permission::create(['name' => 'create sales notes', 'module' => 'notas de ventas']);
+        Permission::create(['name' => 'update sales notes', 'module' => 'notas de ventas']);
+        Permission::create(['name' => 'destroy sales notes', 'module' => 'notas de ventas']);
+        // PERMISSION VENTA
+        Permission::create(['name' => 'read sale', 'module' => 'ventas']);
+        Permission::create(['name' => 'create sale', 'module' => 'ventas']);
+        Permission::create(['name' => 'update sale', 'module' => 'ventas']);
+        Permission::create(['name' => 'destroy sale', 'module' => 'ventas']);
+        // PERMISSION PAYMENTS
+        Permission::create(['name' => 'read payments', 'module' => 'pagos']);
+        Permission::create(['name' => 'create payments', 'module' => 'pagos']);
+        Permission::create(['name' => 'update payments', 'module' => 'pagos']);
+        Permission::create(['name' => 'destroy payments', 'module' => 'pagos']);
 
         $admin = Role::create(['name' => 'administrador']);
 
         $admin->givePermissionTo(Permission::all());
+
 
 
     }

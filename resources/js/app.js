@@ -26,7 +26,7 @@ createApp({
 })
     // .component("v-icon", OhVueIcon)
     // .use(setupCalendar, {})
-    // .use(plugin)
+    .use(plugin)
     // .use(BootstrapIconsPlugin)
     // .use(pinia)
     // .use(Donut)
