@@ -1,0 +1,186 @@
+:root{
+    --bloqueado: #C0C0C0
+}
+
+@page {
+	header: page-header;
+	footer: page-footer;
+}
+body {
+    margin-top: 3cm;
+    margin-left: 3cm;
+    margin-right: 3cm;
+    margin-bottom: 3cm;
+}
+
+
+footer {
+
+    position: fixed;
+    display: flex;
+    bottom: 0px;
+    align-items: center;
+}
+
+
+
+.flex{
+    display: flex !important;
+}
+
+.w-5{
+    width: 2% !important;
+}
+.w-10{
+    width: 10% !important;
+}
+.w-20{
+    width: 20% !important;
+}
+.w-30{
+    width: 30% !important;
+}
+.w-40{
+    width: 40% !important;
+}
+.w-50{
+    width: 50% !important;
+}
+.w-60{
+    width: 60% !important;
+}
+.w-70{
+    width: 70% !important;
+}
+.w-80{
+    width: 80% !important;
+}
+.w-90{
+    width: 90% !important;
+}
+.w-100{
+    width: 100% !important;
+}
+
+.border{
+    border: 2px solid #ccc;
+}
+
+.border-double-l{
+    border-left: 4px double #ccc;
+}
+.border-double-t{
+    border-top: 4px double #ccc;
+}
+.border-double-b{
+    border-bottom: 4px double #ccc;
+}
+.border-double-r{
+    border-right: 4px double #ccc;
+}
+
+.border-solid-l{
+    border-left: 2px solid #ccc;
+}
+.border-solid-t{
+    border-top: 2px solid #ccc;
+}
+.border-solid-b{
+    border-bottom: 2px solid #ccc;
+}
+.border-solid-r{
+    border-right: 2px solid #ccc;
+}
+
+.border-none-l{
+    border-left: 2px solid #ccc !important;
+}
+.border-none-t{
+    border-top: 2px solid #ccc !important;
+}
+.border-none-b{
+    border-bottom: 2px solid #ccc !important;
+}
+.border-none-r{
+    border-right: 2px solid #ccc !important;
+}
+
+.border-colapse{
+    border-collapse: collapse;
+}
+ 
+
+.table-border-none td,
+.table-border-none th,
+.table-border-none tr {
+    border: none;
+}
+
+
+.bg-green{
+    background-color: #d7e4bd;
+    color: white
+}
+
+.center{
+    text-align: center !important;
+}
+ 
+
+table{
+    width: 100%;
+    border-spacing: 0px;
+    border: none
+}
+ 
+
+
+.td-heigth{
+    height: 20px;
+} 
+
+.text-danger{
+    color: rgba(255, 0, 0, 0.691);;
+}
+
+.space{
+    border-collapse: collapse;
+}
+ 
+
+.mt-5{
+    margin-top: 0.5rem;
+}
+.mt-10{
+    margin-top: 1.5rem;
+}
+
+.h-24{
+    height: 24px;
+    padding: 3px;
+}
+
+
+.mr-5{
+   margin-right: 20px !important;
+}
+.ml-5{
+   margin-left: 20px !important;
+}
+.text-left{
+
+    text-align: left !important;
+}
+.text-right{
+
+    text-align: right !important;
+}
+
+.px-5{
+    padding-left: 10px; /* 28px */
+    padding-right: 10px; /* 28px */
+}
+ 
+.page {
+    page-break-after: always;
+}

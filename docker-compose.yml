@@ -1,0 +1,42 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: global-glaucoma-app
+    volumes:
+      - .:/var/www/html
+    networks:
+      - global-glaucoma-network
+  webserver:
+    image: nginx:alpine
+    container_name: global-glaucoma-webserver
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - global-glaucoma-network
+  mysql:
+    image: mysql:5.7.25
+    hostname: mysql # para comunicacion entre containers
+    ports:
+      - "3306:3306"
+    volumes:
+      - /datos/mysql-5-7-2:/var/lib/mysql
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Qnx640140!d747fb9cf7
+      MYSQL_DATABASE: global_glaucoma #nombre de la base de datos a crear
+      MYSQL_ROOT_PASSWORD: Qnx640140!d747fb9cf7
+    networks:
+      - global-glaucoma-network
+networks:
+  global-glaucoma-network:
+
+volumes:
+  global-glaucoma-mysql-data:
