@@ -19544,7 +19544,7 @@ var el = document.getElementById('app');
 })
 // .component("v-icon", OhVueIcon)
 // .use(setupCalendar, {})
-// .use(plugin)
+.use(_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.plugin)
 // .use(BootstrapIconsPlugin)
 // .use(pinia)
 // .use(Donut)
