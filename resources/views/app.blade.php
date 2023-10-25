@@ -20,6 +20,8 @@
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap5.min.css">
     <link href="{{ asset('/admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/admin/css/light/plugins.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/admin/css/light/search.css') }}" rel="stylesheet" type="text/css" />
@@ -40,6 +42,7 @@
 </head>
 
 <body class="layout-boxed">
+
 
     {{-- @include('publicv2.includes.tagmanagerhead') --}}
 
@@ -66,7 +69,6 @@
                 <div class="middle-content container-xxl p-0"  >
                     @include('layouts.admin.clientes.topbar')
 
-
                     @inertia
 
                 </div>
@@ -84,7 +86,8 @@
     <!-- END MAIN CONTAINER -->
     <script>
         window.appLocale = "{{ app()->getLocale() }}";
-    </script>
+
+        </script>
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
     <script src="{{ asset('/admin/js/bootstrap.bundle.min.js') }}?{{ uniqid() }}"></script>
     <script src="{{ asset('/admin/js/perfect-scrollbar.min.js') }}?{{ uniqid() }}"></script>
@@ -93,7 +96,11 @@
     <script src="{{ asset('/admin/js/app.js') }}?{{ uniqid() }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"></script>
     <script src="{{ asset('js/app.js') }}?{{ uniqid() }}"></script>
+    <script src="{{ asset('admin/js/datatables.js') }}?{{ uniqid() }}"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap5.min.js"></script>
     {{-- <script src="../layouts/vertical-light-menu/app.js"></script> --}}
+
     @yield('scripts')
 </body>
 </html>

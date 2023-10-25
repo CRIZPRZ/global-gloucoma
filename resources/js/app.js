@@ -3,11 +3,9 @@ require('./bootstrap');
 import { createApp, h } from 'vue';
 import { app, plugin } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress'
-import $ from 'jquery';
-window.jQuery = $;
-window.$ = $;
-import 'datatables.net-bs5';
-import 'datatables.net-bs5/css/dataTables.bootstrap5.min.css';
+
+// import 'datatables.net-bs5';
+// import 'datatables.net-bs5/css/dataTables.bootstrap5.min.css';
 
 InertiaProgress.init({
     // The delay after which the progress bar will
