@@ -13,8 +13,7 @@ class MenuComposer
 
     public function compose(View $view)
     {
-        // $permisosUsuario = $this->obtenerPermisosUsuario(81905);
-        // $permisosUsuario = $this->obtenerPermisosUsuario(Session::get('id_persona'));
+
         $menu = $this->menu() ?? [];
 
         $menuBase = $this->menuBase();
@@ -23,19 +22,6 @@ class MenuComposer
 
         $view->with('menus', $menus);
     }
-
-    // private function obtenerPermisosUsuario($id_persona)
-    // {
-    //     $permisos = PersonaTipoRol::select('permisos_personas_tipos_roles.*', 'roles.nombre_rol')
-    //                 ->join('permisos_personas_tipos_roles', 'personas_tipos_roles.id_persona_tipo_rol', '=', 'permisos_personas_tipos_roles.id_persona_tipo_rol')
-    //                 ->join('roles', 'personas_tipos_roles.id_rol', '=', 'roles.id_rol')
-    //                 ->where('personas_tipos_roles.id_persona', $id_persona)
-    //                 ->where('personas_tipos_roles.id_rol', config('constantes.idAdministrador'))
-    //                 ->first();
-
-    //     return $permisos;
-    // }
-
     private function menuBase(){
         return  [
             [
@@ -54,7 +40,7 @@ class MenuComposer
                 'itemsMenu' => array_filter([
                     ['admin/servers', 'Servidores'],
                     ['admin/servers', 'Citas'],
-                    ['clientes/admin/campeonatos', 'Usuarios'],
+                    ['admin/users', 'Usuarios'],
                 ]),
             ],
             [

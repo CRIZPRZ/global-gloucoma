@@ -28,11 +28,11 @@ class ConfigDatabaseController extends Controller
             DB::beginTransaction();
                 ConfigDatabase::create($request->all());
             DB::commit();
-            toastr()->success('Guardado con exito!');
+
             return to_route('admin.servers.index');
 
         }catch(Exception $e){
-            dd($e);
+
             DB::rollBack();
 
         }
@@ -40,26 +40,38 @@ class ConfigDatabaseController extends Controller
     }
 
     public function update(Request $request, $id){
-        //dd($request);
+
         try {
+
             DB::beginTransaction();
             $configDatabase = ConfigDatabase::find($id);
+
             $configDatabase->host = $request['host'];
             $configDatabase->database = $request['database'];
             $configDatabase->save();
             DB::commit();
-            $data = $this->respondSuccess('Guardado con exito!');
+            return to_route('admin.servers.index');
 
-        }catch(Exception $e){
-            dd($e);
-            DB::rollBack();
-            $data = $this->respondWentWrong($e);
+        } catch (ModelNotFoundException $e) {
+            DB::rollback();
 
+            return to_route('admin.servers.index');
+        } catch (QueryException $e) {
+            DB::rollback();
 
+            return to_route('admin.servers.index');
+        } catch (DecryptException $e) {
+            DB::rollback();
+
+            return to_route('admin.servers.index');
+        } catch (Exception $e) {
+            DB::rollback();
+
+            return to_route('admin.servers.index');
         }
-        return $data;
-}
-public function destroy($id)
+    }
+
+    public function destroy($id)
     {
         try {
 
@@ -71,7 +83,6 @@ public function destroy($id)
 
             DB::commit();
 
-            toastr()->success('Registro Eliminado');
             return to_route('admin.servers.index');
 
         } catch (ModelNotFoundException $e) {
