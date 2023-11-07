@@ -28715,6 +28715,54 @@ ${codeFrame}` : message);
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
+	"./AppointmentTypes/Create": [
+		"./resources/js/Pages/AppointmentTypes/Create.vue",
+		"resources_js_Pages_AppointmentTypes_Create_vue"
+	],
+	"./AppointmentTypes/Create.vue": [
+		"./resources/js/Pages/AppointmentTypes/Create.vue",
+		"resources_js_Pages_AppointmentTypes_Create_vue"
+	],
+	"./AppointmentTypes/Edit": [
+		"./resources/js/Pages/AppointmentTypes/Edit.vue",
+		"resources_js_Pages_AppointmentTypes_Edit_vue"
+	],
+	"./AppointmentTypes/Edit.vue": [
+		"./resources/js/Pages/AppointmentTypes/Edit.vue",
+		"resources_js_Pages_AppointmentTypes_Edit_vue"
+	],
+	"./AppointmentTypes/Form": [
+		"./resources/js/Pages/AppointmentTypes/Form.vue",
+		"resources_js_Pages_AppointmentTypes_Form_vue"
+	],
+	"./AppointmentTypes/Form.vue": [
+		"./resources/js/Pages/AppointmentTypes/Form.vue",
+		"resources_js_Pages_AppointmentTypes_Form_vue"
+	],
+	"./AppointmentTypes/Index": [
+		"./resources/js/Pages/AppointmentTypes/Index.vue",
+		"resources_js_Pages_AppointmentTypes_Index_vue"
+	],
+	"./AppointmentTypes/Index.vue": [
+		"./resources/js/Pages/AppointmentTypes/Index.vue",
+		"resources_js_Pages_AppointmentTypes_Index_vue"
+	],
+	"./AppointmentTypes/Store": [
+		"./resources/js/Pages/AppointmentTypes/Store.js",
+		"resources_js_Pages_AppointmentTypes_Store_js"
+	],
+	"./AppointmentTypes/Store.js": [
+		"./resources/js/Pages/AppointmentTypes/Store.js",
+		"resources_js_Pages_AppointmentTypes_Store_js"
+	],
+	"./AppointmentTypes/modals/Form": [
+		"./resources/js/Pages/AppointmentTypes/modals/Form.vue",
+		"resources_js_Pages_AppointmentTypes_modals_Form_vue"
+	],
+	"./AppointmentTypes/modals/Form.vue": [
+		"./resources/js/Pages/AppointmentTypes/modals/Form.vue",
+		"resources_js_Pages_AppointmentTypes_modals_Form_vue"
+	],
 	"./Dashboard/Dashboard": [
 		"./resources/js/Pages/Dashboard/Dashboard.vue",
 		"resources_js_Pages_Dashboard_Dashboard_vue"
@@ -36399,7 +36447,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_Dashboard_Dashboard_vue":1,"resources_js_Pages_Server_Index_vue":1,"resources_js_Pages_Server_Store_js":1,"resources_js_Pages_Server_modals_Form_vue":1,"resources_js_Pages_Users_Create_vue":1,"resources_js_Pages_Users_Edit_vue":1,"resources_js_Pages_Users_Form_vue":1,"resources_js_Pages_Users_Index_vue":1,"resources_js_Pages_Users_Store_js":1,"resources_js_Pages_Users_modals_Form_vue":1,"resources_js_Pages_Welcome_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_AppointmentTypes_Create_vue":1,"resources_js_Pages_AppointmentTypes_Edit_vue":1,"resources_js_Pages_AppointmentTypes_Form_vue":1,"resources_js_Pages_AppointmentTypes_Index_vue":1,"resources_js_Pages_AppointmentTypes_Store_js":1,"resources_js_Pages_AppointmentTypes_modals_Form_vue":1,"resources_js_Pages_Dashboard_Dashboard_vue":1,"resources_js_Pages_Server_Index_vue":1,"resources_js_Pages_Server_Store_js":1,"resources_js_Pages_Server_modals_Form_vue":1,"resources_js_Pages_Users_Create_vue":1,"resources_js_Pages_Users_Edit_vue":1,"resources_js_Pages_Users_Form_vue":1,"resources_js_Pages_Users_Index_vue":1,"resources_js_Pages_Users_Store_js":1,"resources_js_Pages_Users_modals_Form_vue":1,"resources_js_Pages_Welcome_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

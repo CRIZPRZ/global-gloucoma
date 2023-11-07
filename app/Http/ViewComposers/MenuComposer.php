@@ -39,7 +39,7 @@ class MenuComposer
                 'nombreMenu' => 'Configuracion',
                 'itemsMenu' => array_filter([
                     ['admin/servers', 'Servidores'],
-                    ['admin/servers', 'Citas'],
+                    ['admin/appointmentsTypes', 'Citas'],
                     ['admin/users', 'Usuarios'],
                 ]),
             ],
