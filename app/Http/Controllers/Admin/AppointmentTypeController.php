@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AppointmentType;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -16,14 +17,11 @@ class AppointmentTypeController extends Controller
         return Inertia::render('AppointmentTypes/Index', compact('appointment_types'));
     }
 
-    public function create(): array
+    public function create()
     {
         $products = Product::all();
 
-        $data = [
-            'products' => $products,
-        ];
-        return $data;
+        return Inertia::render('AppointmentTypes/Create', compact('products'));
     }
 
     public function store(Request $request)

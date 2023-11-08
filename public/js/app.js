@@ -28835,14 +28835,6 @@ var map = {
 		"./resources/js/Pages/Users/Store.js",
 		"resources_js_Pages_Users_Store_js"
 	],
-	"./Users/modals/Form": [
-		"./resources/js/Pages/Users/modals/Form.vue",
-		"resources_js_Pages_Users_modals_Form_vue"
-	],
-	"./Users/modals/Form.vue": [
-		"./resources/js/Pages/Users/modals/Form.vue",
-		"resources_js_Pages_Users_modals_Form_vue"
-	],
 	"./Welcome": [
 		"./resources/js/Pages/Welcome.vue",
 		"resources_js_Pages_Welcome_vue"
@@ -36447,7 +36439,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_AppointmentTypes_Create_vue":1,"resources_js_Pages_AppointmentTypes_Edit_vue":1,"resources_js_Pages_AppointmentTypes_Form_vue":1,"resources_js_Pages_AppointmentTypes_Index_vue":1,"resources_js_Pages_AppointmentTypes_Store_js":1,"resources_js_Pages_AppointmentTypes_modals_Form_vue":1,"resources_js_Pages_Dashboard_Dashboard_vue":1,"resources_js_Pages_Server_Index_vue":1,"resources_js_Pages_Server_Store_js":1,"resources_js_Pages_Server_modals_Form_vue":1,"resources_js_Pages_Users_Create_vue":1,"resources_js_Pages_Users_Edit_vue":1,"resources_js_Pages_Users_Form_vue":1,"resources_js_Pages_Users_Index_vue":1,"resources_js_Pages_Users_Store_js":1,"resources_js_Pages_Users_modals_Form_vue":1,"resources_js_Pages_Welcome_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_AppointmentTypes_Create_vue":1,"resources_js_Pages_AppointmentTypes_Edit_vue":1,"resources_js_Pages_AppointmentTypes_Form_vue":1,"resources_js_Pages_AppointmentTypes_Index_vue":1,"resources_js_Pages_AppointmentTypes_Store_js":1,"resources_js_Pages_AppointmentTypes_modals_Form_vue":1,"resources_js_Pages_Dashboard_Dashboard_vue":1,"resources_js_Pages_Server_Index_vue":1,"resources_js_Pages_Server_Store_js":1,"resources_js_Pages_Server_modals_Form_vue":1,"resources_js_Pages_Users_Create_vue":1,"resources_js_Pages_Users_Edit_vue":1,"resources_js_Pages_Users_Form_vue":1,"resources_js_Pages_Users_Index_vue":1,"resources_js_Pages_Users_Store_js":1,"resources_js_Pages_Welcome_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
