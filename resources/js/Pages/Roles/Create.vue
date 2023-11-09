@@ -1,8 +1,7 @@
 <template>
     <div class="container pt-5">
         <div class="row">
-           <Form :errors="errors" :form="form" :products="products"></Form>
-
+           <Form :errors="errors" :form="form" :permissions="permissions"></Form>
            <div class="col-lg-12 mt-5 d-flex justify-content-end">
                 <button class="btn btn-info mb-2 me-4" @click="store">Guardar</button>
            </div>
@@ -15,21 +14,13 @@
     import { ref } from 'vue';
     import { useToast } from 'vue-toastification'
     import { Inertia } from '@inertiajs/inertia'
-    const props = defineProps(['errors', 'form', 'products'])
+    const props = defineProps(['errors', 'form', 'permissions'])
     const toast = useToast()
     const form = ref(
         Inertia.form({
-            id                  : null,
-            name                : '',
-            active              : true,
-            related_product_id  : '',
-            payload:{
-                    name:null,
-                    related_product_id:null,
-                    active:true,
-                    rows:[],
-                },
-
+            id              : null,
+            name            : '',
+            permissions_role: [],
         }, {
             resetOnSuccess: false
         })
@@ -37,7 +28,7 @@
 
 
     const store = () => {
-        form.value.post(route('admin.appointmentsTypes.store'), {
+        form.value.post(route('admin.roles.store'), {
             preserveScroll: true,
             onSuccess: () => {
                 form.value.reset();

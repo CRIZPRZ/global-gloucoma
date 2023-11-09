@@ -33,6 +33,9 @@
     <link href="{{ asset('/admin/css/dark/switches.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/admin/css/dark/modal.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/admin/css/dark/tabs.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/admin/plugins/src/tomSelect/tom-select.default.min.css')}}  ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/admin/css/light/custom-tomSelect.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/admin/css/dark/custom-tomSelect.css') }}">
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
@@ -98,6 +101,8 @@
     <script src="{{ asset('admin/js/datatables.js') }}?{{ uniqid() }}"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap5.min.js"></script>
+    {{-- <script src="{{ asset('admin/plugins/src/tomSelect/tom-select.base.js') }}?{{ uniqid() }}"></script>
+    <script src="{{ asset('admin/plugins/src/tomSelect/custom-tom-select.js') }}?{{ uniqid() }}"></script> --}}
     {{-- <script src="../layouts/vertical-light-menu/app.js"></script> --}}
 
     @yield('scripts')

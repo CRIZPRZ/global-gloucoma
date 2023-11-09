@@ -14,7 +14,7 @@
 	    <div class="col-lg-12">
 	        <div class="statbox widget box box-shadow">
 	            <div class="widget-content widget-content-area">
-	                <table id="users" class="table style-1 dt-table-hover non-hover datatable">
+	                <table id="appointment_types" class="table style-1 dt-table-hover non-hover datatable">
 	                    <thead>
 	                        <tr>
 	                            <th>ID</th>
@@ -39,14 +39,12 @@
 	        </div>
 	    </div>
 	</div>
-    <!-- Modal -->
-    <Form />
+
 </template>
 
 <script setup>
     import { onMounted } from 'vue';
 
-    import Form from './modals/Form.vue'
     import customDatatable from '../../plugins/Datatables.js';
     import { useStoreStore } from './Store';
     import { Link } from '@inertiajs/inertia-vue3';
