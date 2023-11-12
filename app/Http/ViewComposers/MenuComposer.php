@@ -50,7 +50,7 @@ class MenuComposer
             ],
             [
                 'nombreMenu' => 'Pacientes',
-                'url' => 'clientes/admin/campeonatos',
+                'url' => '/admin/patients',
                 'itemsMenu' => [],
             ],
             [
