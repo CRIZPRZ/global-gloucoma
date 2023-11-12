@@ -109,11 +109,7 @@ var _hoisted_12 = {
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-solid fa-pen-to-square"
 }, null, -1 /* HOISTED */);
-var _hoisted_14 = ["onClick"];
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa-solid fa-trash"
-}, null, -1 /* HOISTED */);
-var _hoisted_16 = [_hoisted_15];
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
     "class": "btn btn-success btn-lg float-end",
@@ -137,15 +133,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return [_hoisted_13];
       }),
       _: 2 /* DYNAMIC */
-    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-      onClick: function onClick($event) {
-        return $setup.store.deleteItem(patient.id);
-      },
-      "class": "action-btn btn-delete bs-tooltip",
-      "data-toggle": "tooltip",
-      "data-placement": "top",
-      title: "Eliminar"
-    }, [].concat(_hoisted_16), 8 /* PROPS */, _hoisted_14)])])]);
+    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <a @click=\"store.deleteItem(patient.id)\" class=\"action-btn btn-delete bs-tooltip\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Eliminar\">\n\t\t\t\t                            <i class=\"fa-solid fa-trash\"></i>\n\t\t\t\t                        </a> ")])])]);
   }), 128 /* KEYED_FRAGMENT */))])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal ")], 64 /* STABLE_FRAGMENT */);
 }
 

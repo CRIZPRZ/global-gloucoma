@@ -35,9 +35,9 @@
 				                        <Link :href="route('admin.patients.edit', patient.id)" class="action-btn btn-edit bs-tooltip me-2" data-toggle="tooltip" data-placement="top" title="Editar" >
 				                            <i class="fa-solid fa-pen-to-square"></i>
 				                        </Link>
-				                        <a @click="store.deleteItem(patient.id)" class="action-btn btn-delete bs-tooltip" data-toggle="tooltip" data-placement="top" title="Eliminar">
+				                        <!-- <a @click="store.deleteItem(patient.id)" class="action-btn btn-delete bs-tooltip" data-toggle="tooltip" data-placement="top" title="Eliminar">
 				                            <i class="fa-solid fa-trash"></i>
-				                        </a>
+				                        </a> -->
 				                    </div>
 				                </td>
 	                        </tr>

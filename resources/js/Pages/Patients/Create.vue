@@ -1,7 +1,7 @@
 <template>
     <div class="container pt-5">
         <div class="row">
-           <Form :errors="errors" :form="form" :branches="branches"></Form>
+           <Form :errors="errors" :form="form" :sexes="sexes" :occupations="occupations"></Form>
 
            <div class="col-lg-12 mt-5 d-flex justify-content-end">
                 <button class="btn btn-info mb-2 me-4" @click="store">Guardar</button>
@@ -21,18 +21,31 @@
         Inertia.form({
             id              : null,
             name            : '',
-            branch_id       : '',
+            birthday        : '',
+            gender          : '',
+            profession      : '',
+            company_name    : '',
+            tin             : '',
+            street          : '',
+            street2         : '',
+            zip             : '',
+            city            : '',
+            state           : '',
+            country         : '',
             email           : '',
-            password        : '',
-            odoo_password   : '',
+            phone           : '',
+            email           : '',
         }, {
             resetOnSuccess: false
         })
     )
 
+    const sexes = [{value:'HOMBRE',text:'Hombre'},{value:'MUJER',text:'Mujer'}]
+
+    const occupations = [{'value': 0,'text':'NO DISPONIBLE'}]
 
     const store = () => {
-        form.value.post(route('admin.users.store'), {
+        form.value.post(route('admin.patients.store'), {
             preserveScroll: true,
             onSuccess: () => {
                 form.value.reset();
