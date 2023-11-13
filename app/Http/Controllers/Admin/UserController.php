@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -27,18 +28,20 @@ class UserController extends Controller
     {
         $branches = Branch::select('id','name')->get();
 
+        $roles = Role::all();
 
-
-        return Inertia::render('Users/Create', compact('branches'));
+        return Inertia::render('Users/Create', compact('branches', 'roles'));
 
     }
 
     public function edit(User $user)
     {
 
-        $branches = Branch::select('id','name')->get();
 
-        return Inertia::render('Users/Edit', compact('branches', 'user'));
+        $branches = Branch::select('id','name')->get();
+        $roles = Role::all();
+
+        return Inertia::render('Users/Edit', compact('branches', 'user', 'roles'));
 
     }
     public function store(Request $request)
@@ -48,9 +51,13 @@ class UserController extends Controller
 
             DB::beginTransaction();
 
+
+                $role = Role::find($request->role_id);
                 $data = $request->only('name','email','password','odoo_password','branch_id');
                 $data['password'] = Hash::make($data['password']);
                 $user = User::create($data);
+
+                $user->assignRole($role);
 
                 DB::commit();
 
@@ -82,11 +89,30 @@ class UserController extends Controller
 
             DB::beginTransaction();
 
+            $role = Role::find($request->role_id);
+
             $user = User::find($id);
 
-            $data = $request->only('name','email','password','odoo_password','branch_id');
+            $data = $request->only('name','email','password','branch_id');
             $data['password'] = Hash::make($data['password']);
+            if ( !is_null($request->odoo_password) ) {
+
+                $data['odoo_password'] = $request->odoo_password;
+            }
+
             $user->update($data);
+
+            if ( !$user->role_id ):
+                $user->assignRole($role);
+            endif;
+
+            if ( $user->role_id !== $role->id):
+                $roleOld = Role::find($user->role_id);
+
+                $user->removeRole($roleOld);
+                $user->assignRole($role);
+
+            endif;
 
             DB::commit();
 

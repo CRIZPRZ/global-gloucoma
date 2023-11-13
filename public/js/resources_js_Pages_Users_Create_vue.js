@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   __name: 'Create',
-  props: ['errors', 'form', 'branches'],
+  props: ['errors', 'form', 'branches', 'roles'],
   setup: function setup(__props, _ref) {
     var __expose = _ref.expose;
     __expose();
@@ -33,7 +33,8 @@ __webpack_require__.r(__webpack_exports__);
       branch_id: '',
       email: '',
       password: '',
-      odoo_password: ''
+      odoo_password: '',
+      role_id: ''
     }, {
       resetOnSuccess: false
     }));
@@ -86,7 +87,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   __name: 'Form',
-  props: ['errors', 'form', 'branches'],
+  props: ['errors', 'form', 'branches', 'roles'],
   setup: function setup(__props, _ref) {
     var __expose = _ref.expose;
     __expose();
@@ -126,8 +127,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Form"], {
     errors: $props.errors,
     form: $setup.form,
-    branches: $props.branches
-  }, null, 8 /* PROPS */, ["errors", "form", "branches"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    branches: $props.branches,
+    roles: $props.roles
+  }, null, 8 /* PROPS */, ["errors", "form", "branches", "roles"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "col-lg-12 mt-5 d-flex justify-content-end"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-info mb-2 me-4",
@@ -174,11 +176,11 @@ var _hoisted_8 = {
   "class": "form-group"
 };
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "branch_id"
+  "for": "role_id"
 }, "Sucursal", -1 /* HOISTED */);
 var _hoisted_10 = ["value"];
 var _hoisted_11 = {
-  "class": "col-lg-6 mt-5"
+  "class": "col-lg-4 mt-5"
 };
 var _hoisted_12 = {
   "class": "form-group"
@@ -187,7 +189,7 @@ var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "for": "name"
 }, "Contraseña", -1 /* HOISTED */);
 var _hoisted_14 = {
-  "class": "col-lg-6 mt-5"
+  "class": "col-lg-4 mt-5"
 };
 var _hoisted_15 = {
   "class": "form-group"
@@ -195,7 +197,16 @@ var _hoisted_15 = {
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "email"
 }, "Contraseña odoo", -1 /* HOISTED */);
-
+var _hoisted_17 = {
+  "class": "col-lg-4 mt-5"
+};
+var _hoisted_18 = {
+  "class": "form-group"
+};
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "role_id"
+}, "Rol", -1 /* HOISTED */);
+var _hoisted_20 = ["value"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
@@ -245,7 +256,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "email",
     "class": "form-control",
     required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.form.odoo_password]])])])], 64 /* STABLE_FRAGMENT */);
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.form.odoo_password]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    "class": "form-control",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $props.form.role_id = $event;
+    }),
+    id: "role_id",
+    name: "role_id",
+    required: ""
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.roles, function (role) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+      value: role.id
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.name), 9 /* TEXT, PROPS */, _hoisted_20);
+  }), 256 /* UNKEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $props.form.role_id]])])])], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

@@ -28795,13 +28795,13 @@ var map = {
 		"./resources/js/Pages/Patients/Index.vue",
 		"resources_js_Pages_Patients_Index_vue"
 	],
-	"./Patients/Store": [
-		"./resources/js/Pages/Patients/Store.js",
-		"resources_js_Pages_Patients_Store_js"
+	"./Reports/Payments/Index": [
+		"./resources/js/Pages/Reports/Payments/Index.vue",
+		"resources_js_Pages_Reports_Payments_Index_vue"
 	],
-	"./Patients/Store.js": [
-		"./resources/js/Pages/Patients/Store.js",
-		"resources_js_Pages_Patients_Store_js"
+	"./Reports/Payments/Index.vue": [
+		"./resources/js/Pages/Reports/Payments/Index.vue",
+		"resources_js_Pages_Reports_Payments_Index_vue"
 	],
 	"./Roles/Create": [
 		"./resources/js/Pages/Roles/Create.vue",
@@ -28890,14 +28890,6 @@ var map = {
 	"./Users/Index.vue": [
 		"./resources/js/Pages/Users/Index.vue",
 		"resources_js_Pages_Users_Index_vue"
-	],
-	"./Users/Store": [
-		"./resources/js/Pages/Users/Store.js",
-		"resources_js_Pages_Users_Store_js"
-	],
-	"./Users/Store.js": [
-		"./resources/js/Pages/Users/Store.js",
-		"resources_js_Pages_Users_Store_js"
 	],
 	"./Welcome": [
 		"./resources/js/Pages/Welcome.vue",
@@ -36503,7 +36495,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_AppointmentTypes_Create_vue":1,"resources_js_Pages_AppointmentTypes_Edit_vue":1,"resources_js_Pages_AppointmentTypes_Form_vue":1,"resources_js_Pages_AppointmentTypes_Index_vue":1,"resources_js_Pages_AppointmentTypes_Store_js":1,"resources_js_Pages_Dashboard_Dashboard_vue":1,"resources_js_Pages_Patients_Create_vue":1,"resources_js_Pages_Patients_Edit_vue":1,"resources_js_Pages_Patients_Form_vue":1,"resources_js_Pages_Patients_Index_vue":1,"resources_js_Pages_Patients_Store_js":1,"resources_js_Pages_Roles_Create_vue":1,"resources_js_Pages_Roles_Edit_vue":1,"resources_js_Pages_Roles_Form_vue":1,"resources_js_Pages_Roles_Index_vue":1,"resources_js_Pages_Server_Index_vue":1,"resources_js_Pages_Server_Store_js":1,"resources_js_Pages_Server_modals_Form_vue":1,"resources_js_Pages_Users_Create_vue":1,"resources_js_Pages_Users_Edit_vue":1,"resources_js_Pages_Users_Form_vue":1,"resources_js_Pages_Users_Index_vue":1,"resources_js_Pages_Users_Store_js":1,"resources_js_Pages_Welcome_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_AppointmentTypes_Create_vue":1,"resources_js_Pages_AppointmentTypes_Edit_vue":1,"resources_js_Pages_AppointmentTypes_Form_vue":1,"resources_js_Pages_AppointmentTypes_Index_vue":1,"resources_js_Pages_AppointmentTypes_Store_js":1,"resources_js_Pages_Dashboard_Dashboard_vue":1,"resources_js_Pages_Patients_Create_vue":1,"resources_js_Pages_Patients_Edit_vue":1,"resources_js_Pages_Patients_Form_vue":1,"resources_js_Pages_Patients_Index_vue":1,"resources_js_Pages_Reports_Payments_Index_vue":1,"resources_js_Pages_Roles_Create_vue":1,"resources_js_Pages_Roles_Edit_vue":1,"resources_js_Pages_Roles_Form_vue":1,"resources_js_Pages_Roles_Index_vue":1,"resources_js_Pages_Server_Index_vue":1,"resources_js_Pages_Server_Store_js":1,"resources_js_Pages_Server_modals_Form_vue":1,"resources_js_Pages_Users_Create_vue":1,"resources_js_Pages_Users_Edit_vue":1,"resources_js_Pages_Users_Form_vue":1,"resources_js_Pages_Users_Index_vue":1,"resources_js_Pages_Welcome_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

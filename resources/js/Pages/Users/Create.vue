@@ -1,7 +1,7 @@
 <template>
     <div class="container pt-5">
         <div class="row">
-           <Form :errors="errors" :form="form" :branches="branches"></Form>
+           <Form :errors="errors" :form="form" :branches="branches" :roles="roles"></Form>
 
            <div class="col-lg-12 mt-5 d-flex justify-content-end">
                 <button class="btn btn-info mb-2 me-4" @click="store">Guardar</button>
@@ -15,7 +15,7 @@
     import { ref } from 'vue';
     import { useToast } from 'vue-toastification'
     import { Inertia } from '@inertiajs/inertia'
-    const props = defineProps(['errors', 'form', 'branches'])
+    const props = defineProps(['errors', 'form', 'branches', 'roles'])
     const toast = useToast()
     const form = ref(
         Inertia.form({
@@ -25,6 +25,7 @@
             email           : '',
             password        : '',
             odoo_password   : '',
+            role_id         : '',
         }, {
             resetOnSuccess: false
         })

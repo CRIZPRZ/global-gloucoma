@@ -38,6 +38,7 @@ class RolesAndPermissionController extends Controller
     public function store(Request $request)
     {
         try{
+
             DB::beginTransaction();
 
                 $role = Role::create($request->all());

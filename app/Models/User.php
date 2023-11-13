@@ -18,6 +18,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $appends = ['role_id'];
+
     protected $fillable = [
         'name', 'email', 'password','odoo_password','branch_id'
     ];
@@ -28,7 +30,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password', 'remember_token','odoo_password',
+        'password', 'remember_token',
     ];
 
     /**
@@ -46,5 +48,27 @@ class User extends Authenticatable
         return $this->belongsTo(Branch::class);
     }
 
+    public function getRoleIdAttribute()
+    {
+        if ( count($this->roles) == 0):
+            return null;
+        else:
+            return $this->roles[0]->id;
+        endif;
+    }
+
+    public static function forDropDown($append_all = false)
+    {
+        $users = User::select('id', 'name')
+            ->orderBy('name')
+            ->get()
+            ->toArray();
+
+        if ($append_all) {
+            $users = array_merge([['id' => 0, 'name' =>('TODOS')]], $users);
+        }
+
+        return $users;
+    }
 
 }

@@ -15,29 +15,38 @@
 
     <div class="col-lg-4 mt-5">
         <div class="form-group">
-            <label for="branch_id">Sucursal</label>
+            <label for="role_id">Sucursal</label>
             <select   class="form-control" v-model="form.branch_id" id="branch_id" name="branch_id" required>
                 <option v-for="branhc in branches" :value="branhc.id">{{ branhc.name }}</option>
             </select>
         </div>
     </div>
 
-    <div class="col-lg-6 mt-5">
+    <div class="col-lg-4 mt-5">
         <div class="form-group">
             <label for="name">Contraseña</label>
             <input v-model="form.password" id="name" type="password" name="name" class="form-control"  required>
         </div>
     </div>
 
-    <div class="col-lg-6 mt-5">
+    <div class="col-lg-4 mt-5">
         <div class="form-group">
             <label for="email">Contraseña odoo</label>
             <input v-model="form.odoo_password" id="email" type="password" name="email" class="form-control"  required>
         </div>
     </div>
 
+    <div class="col-lg-4 mt-5">
+        <div class="form-group">
+            <label for="role_id">Rol</label>
+            <select   class="form-control" v-model="form.role_id" id="role_id" name="role_id" required>
+                <option v-for="role in roles" :value="role.id">{{ role.name }}</option>
+            </select>
+        </div>
+    </div>
+
 </template>
 
 <script setup>
-    const props = defineProps(['errors', 'form', 'branches'])
+    const props = defineProps(['errors', 'form', 'branches', 'roles'])
 </script>

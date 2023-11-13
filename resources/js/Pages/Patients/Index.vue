@@ -56,11 +56,10 @@
 
 
     import customDatatable from '../../plugins/Datatables.js';
-    import { useStoreStore } from './Store';
+
     import { Link } from '@inertiajs/inertia-vue3';
 
     const props = defineProps(['patients'])
-    const store = useStoreStore()
 
     onMounted(() => {
         customDatatable('patients')

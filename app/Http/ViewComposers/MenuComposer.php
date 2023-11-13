@@ -40,6 +40,7 @@ class MenuComposer
                 'itemsMenu' => array_filter([
                     ['admin/servers', 'Servidores'],
                     ['admin/appointmentsTypes', 'Citas'],
+                    ['admin/roles', 'Roles y permisos'],
                     ['admin/users', 'Usuarios'],
                 ]),
             ],
@@ -66,8 +67,8 @@ class MenuComposer
             [
                 'nombreMenu' => 'Reportes',
                 'itemsMenu' => array_filter([
-                    ['clientes/admin/campeonatos', 'Ventas'],
-                    ['clientes/admin/campeonatos', 'Pagos'],
+                    ['admin/reports/payments', 'Ventas'],
+                    ['admin/reports/payments', 'Pagos'],
                 ]),
             ],
 

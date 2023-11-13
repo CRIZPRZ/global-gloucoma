@@ -66,6 +66,9 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'destroy payments', 'module' => 'pagos']);
 
         $admin = Role::create(['name' => 'administrador']);
+        Role::create(['name' => 'cliente']);
+        Role::create(['name' => 'contador']);
+        Role::create(['name' => 'vendedor']);
 
         $admin->givePermissionTo(Permission::all());
 
