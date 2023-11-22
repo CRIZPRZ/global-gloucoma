@@ -13,5 +13,6 @@ Route::middleware(['auth'])->name('admin.')->group(function () {
 
     // Reports
     Route::resource('reports/payments', App\Http\Controllers\Admin\ReportPaymentController::class);
+    Route::resource('reports/sales', App\Http\Controllers\Admin\ReportSaleController::class);
 });
 // asd
