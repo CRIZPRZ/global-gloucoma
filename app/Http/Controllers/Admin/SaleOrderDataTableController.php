@@ -59,6 +59,7 @@ class SaleOrderDataTableController extends Controller
             'balance',
             'acctions'
         ])
+        ->setTotalRecords(SaleOrder::count())
         ->toJson();
     }
 }
