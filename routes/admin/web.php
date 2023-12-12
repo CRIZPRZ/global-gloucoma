@@ -15,6 +15,9 @@ Route::middleware(['auth'])->name('admin.')->group(function () {
     Route::resource('patients', App\Http\Controllers\Admin\PatientController::class);
     Route::resource('products', App\Http\Controllers\Admin\ProductsController::class);
     Route::get('/syncProducts', [ App\Http\Controllers\Admin\ProductsController::class, 'syncProducts']);
+
+    Route::resource('saleorders', App\Http\Controllers\Admin\SaleOrderController::class);
+    Route::get('saleordersAjax', [App\Http\Controllers\Admin\SaleOrderDataTableController::class, 'getDataAjax'])->name('saleOrders.getData');
     // Reports
     Route::resource('reports/payments', App\Http\Controllers\Admin\ReportPaymentController::class);
     Route::get('reports/payments/print', [App\Http\Controllers\Admin\ReportPaymentController::class ,'printPayments']);

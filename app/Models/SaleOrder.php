@@ -7,6 +7,8 @@ class SaleOrder extends Model
 {
     protected $fillable = [ 'date','number', 'patient_id','branch_id', 'subtotal', 'discount', 'tax', 'total', 'payment_status', 'odoo_server', 'odoo_sale_order_id', 'odoo_sale_order_number','created_by','created_by_name','first_time'];
 
+    protected $appends = ['balance'];
+
     public function lines()
     {
         return $this->hasMany(SaleOrderLine::class);
@@ -36,5 +38,11 @@ class SaleOrder extends Model
         return $this->belongsTo(User::class,'created_by','id');
     }
 
+    public function getBalanceAttribute()
+    {
+
+            return number_format($this->balance(),2);
+
+    }
 
 }
