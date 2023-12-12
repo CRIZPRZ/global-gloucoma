@@ -46,10 +46,10 @@
 
                         <div class="position-relative">
 
-                            <img src="../img/auth-cover.svg" alt="auth-img">
+                            <img src="{{ asset('images/Recurso-1.png') }}" alt="auth-img" >
 
-                            <h2 class="mt-5 text-white font-weight-bolder px-2">Join the community of expert developers</h2>
-                            <p class="text-white px-2">It is easy to setup with great customer experience. Start your 7-day free trial</p>
+                            <h2 class="mt-5 text-white font-weight-bolder px-2">GLOBAL GLAUCOMA INSTITUTE</h2>
+
                         </div>
 
                     </div>
@@ -81,7 +81,7 @@
                                             <input type="password" name="password" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    {{-- <div class="col-12">
                                         <div class="mb-3">
                                             <div class="form-check form-check-primary form-check-inline">
                                                 <input class="form-check-input me-3" type="checkbox" id="form-check-default">
@@ -90,7 +90,7 @@
                                                 </label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-12">
                                         <div class="mb-4">
@@ -98,7 +98,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12 mb-4">
+                                    {{-- <div class="col-12 mb-4">
                                         <div class="">
                                             <div class="seperator">
                                                 <hr>
@@ -132,13 +132,13 @@
                                                 <span class="btn-text-inner">Twitter</span>
                                             </button>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="col-12">
+                                    {{-- <div class="col-12">
                                         <div class="text-center">
                                             <p class="mb-0">{{ __('No tines una cuenta') }} ? <a href="javascript:void(0);" class="text-warning">{{ __('Registrate') }}</a></p>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                 </div>
                             </div>

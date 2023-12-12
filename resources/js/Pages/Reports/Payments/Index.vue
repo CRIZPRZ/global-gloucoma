@@ -36,8 +36,8 @@
                             </div>
                         </div>
                         <div class="col-lg-3 mt-5 mb-5">
-                            <label for="name" class="text-white">Hasta</label>
-                            <div v-if="date_from && date_to && user_id" class="d-flex justify-content-start">
+                            <label for="name" class="text-white"></label>
+                            <div v-if="date_from && date_to && user_id" class="d-flex justify-content-start mt-2">
                                 <div class="seperator-header  mx-2  ">
                                     <Link class="btn btn-info btn-lg float-end" @click="getFIlter">Procesar</Link>
                                 </div>
@@ -59,14 +59,14 @@
 	                            <td>{{ item.id }}</td>
 	                            <td>{{ item.user.name }}</td>
 	                            <td>{{ item.amount }}</td>
-	                            <td>{{ item.sale_order.number }}</td>
+	                            <td>{{ item?.sale_order?.number }}</td>
 
 	                        </tr>
 	                    </tbody>
 	                </table>
                     <div class="d-flex justify-content-between mt-4">
                         <div class="seperator-header  mx-2  ">
-                            <button class="btn btn-success btn-sm float-end" @click="print('payments')">Imprimir</button>
+                            <button v-if="data.total > 0" class="btn btn-success btn-sm float-end" @click="printPayments">Imprimir</button>
                         </div>
                         <h2>Total: ${{ data.total }}</h2>
                     </div>
@@ -104,21 +104,44 @@
 
     }
 
-    const print = (nombreDiv) => {
-        var contenido= document.getElementById(nombreDiv).innerHTML;
-        var contenidoOriginal= document.body.innerHTML;
+    const printPayments = () => {
 
-        document.body.innerHTML = contenido;
+        var parametros = `user_id=${user_id.value}&date_from=${date_from.value}&date_to=${date_to.value}`; // ajusta los valores según tus necesidades
+        var ruta = "/admin/reports/payments/print?" + parametros;
+        window.open(ruta, "", "width=310");
 
-        window.print();
-
-        document.body.innerHTML = contenidoOriginal;
     }
 
+
+
     onMounted(() => {
-        customDatatable('payments')
+        customDatatable('payments', true)
             user_id.value = props.request.user_id
             date_from.value = props.request.date_from
             date_to.value = props.request.date_to
     })
 </script>
+<style>
+/* Estilos para la impresión */
+    @media print {
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 10px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+    }
+</style>

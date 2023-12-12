@@ -16,6 +16,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _plugins_Datatables_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../plugins/Datatables.js */ "./resources/js/plugins/Datatables.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 
 
@@ -33,6 +37,7 @@ __webpack_require__.r(__webpack_exports__);
     var user_id = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)();
     var date_from = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var date_to = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    var destination = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var reports = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{
       value: 'A',
       text: 'Ventas diarias por concepto'
@@ -65,28 +70,60 @@ __webpack_require__.r(__webpack_exports__);
       value: 5,
       text: 'CIRUGIA'
     }]);
-    var getFIlter = function getFIlter() {
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.get('/admin/reports/payments', {
+    var process = function process() {
+      var _Inertia$get;
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.get('/admin/reports/sales', (_Inertia$get = {
         user_id: user_id.value,
         date_from: date_from.value,
-        date_to: date_to.value
-      }, {
+        date_to: date_to.value,
+        report_type: report_type.value,
+        destination: destination.value,
+        business_unit_id: business_unit_id.value
+      }, _defineProperty(_Inertia$get, "business_unit_id", business_unit_id.value), _defineProperty(_Inertia$get, "destination", "screen"), _Inertia$get), {
         preserveState: true,
         replace: true
       });
     };
-    var print = function print(nombreDiv) {
-      var contenido = document.getElementById(nombreDiv).innerHTML;
-      var contenidoOriginal = document.body.innerHTML;
-      document.body.innerHTML = contenido;
-      window.print();
-      document.body.innerHTML = contenidoOriginal;
+    var exportToPdf = function exportToPdf() {
+      var _request;
+      var request = (_request = {
+        user_id: user_id.value,
+        date_from: date_from.value,
+        date_to: date_to.value,
+        report_type: report_type.value,
+        destination: destination.value,
+        business_unit_id: business_unit_id.value
+      }, _defineProperty(_request, "business_unit_id", business_unit_id.value), _defineProperty(_request, "destination", "pdf"), _request);
+      axios.post('/admin/reports/sales/generate', request, {
+        responseType: 'blob'
+      }).then(function (response) {
+        var url = window.URL.createObjectURL(new Blob([response.data]));
+        var link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'Reporte de ventas.pdf');
+        document.body.appendChild(link);
+        link.click();
+      });
     };
+
+    // const print = (nombreDiv) => {
+    //     var contenido= document.getElementById(nombreDiv).innerHTML;
+    //     var contenidoOriginal= document.body.innerHTML;
+
+    //     document.body.innerHTML = contenido;
+
+    //     window.print();
+
+    //     document.body.innerHTML = contenidoOriginal;
+    // }
+
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
-      (0,_plugins_Datatables_js__WEBPACK_IMPORTED_MODULE_2__["default"])('payments');
+      (0,_plugins_Datatables_js__WEBPACK_IMPORTED_MODULE_2__["default"])('payments', true);
       user_id.value = props.request.user_id;
       date_from.value = props.request.date_from;
       date_to.value = props.request.date_to;
+      report_type.value = props.request.report_type;
+      business_unit_id.value = props.request.business_unit_id;
     });
     var __returned__ = {
       props: props,
@@ -95,10 +132,11 @@ __webpack_require__.r(__webpack_exports__);
       user_id: user_id,
       date_from: date_from,
       date_to: date_to,
+      destination: destination,
       reports: reports,
       businessUnits: businessUnits,
-      getFIlter: getFIlter,
-      print: print,
+      process: process,
+      exportToPdf: exportToPdf,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       get router() {
@@ -205,29 +243,35 @@ var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "for": "date_to"
 }, "Hasta", -1 /* HOISTED */);
 var _hoisted_25 = {
+  key: 2,
   "class": "col-lg-3 mb-5"
 };
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "name",
-  "class": "text-white"
-}, "Hasta", -1 /* HOISTED */);
-var _hoisted_27 = {
-  key: 0,
+var _hoisted_26 = {
   "class": "d-flex justify-content-start"
 };
-var _hoisted_28 = {
+var _hoisted_27 = {
   "class": "seperator-header mx-2"
 };
+var _hoisted_28 = {
+  key: 3,
+  "class": "col-lg-3 mb-5"
+};
 var _hoisted_29 = {
+  "class": "d-flex justify-content-start"
+};
+var _hoisted_30 = {
+  "class": "seperator-header mx-2"
+};
+var _hoisted_31 = {
   border: "1",
   id: "payments",
   "class": "mt-5 table style-1 dt-table-hover non-hover datatable"
 };
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "ID"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Usuario"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Importe"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Nota")])], -1 /* HOISTED */);
-var _hoisted_31 = {
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "FECHA"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "PACIENTE"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "PRIMERA VEZ"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "NOTA"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "CONCEPTO"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "CANTIDAD"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "PRECIO"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "DESCUENTO"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "SUBTOTAL"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "IVA")])], -1 /* HOISTED */);
+var _hoisted_33 = {
   "class": "d-flex justify-content-between mt-4"
 };
-var _hoisted_32 = {
+var _hoisted_34 = {
   "class": "seperator-header mx-2"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -283,24 +327,33 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "date",
     "class": "form-control",
     required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.date_to]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [_hoisted_26, $setup.report_type && $setup.date_from && $setup.date_to ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.date_to]])])]), $setup.date_from && $setup.date_to && $setup.user_id && $setup.report_type ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
     "class": "btn btn-info btn-lg float-end",
-    onClick: $setup.getFIlter
+    onClick: $setup.process
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Procesar")];
     }),
     _: 1 /* STABLE */
-  })])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_29, [_hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.data.items, function (item) {
+  })])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.date_from && $setup.date_to && $setup.user_id && $setup.report_type ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
+    "class": "btn btn-info btn-lg float-end",
+    onClick: $setup.exportToPdf
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Generar pdf")];
+    }),
+    _: 1 /* STABLE */
+  })])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_31, [_hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.data.sales, function (item) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: item.id
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.id), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.user.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.amount), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.sale_order.number), 1 /* TEXT */)]);
-  }), 128 /* KEYED_FRAGMENT */))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.date), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.patient.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.first_time), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.number), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.product_name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.quantity), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.price), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.amount), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.discount), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.tax), 1 /* TEXT */)]);
+  }), 128 /* KEYED_FRAGMENT */))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [$setup.date_from && $setup.date_to && $setup.user_id && $setup.report_type ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 0,
     "class": "btn btn-success btn-sm float-end",
     onClick: _cache[5] || (_cache[5] = function ($event) {
-      return $setup.print('payments');
+      return _ctx.print('payments');
     })
-  }, "Imprimir")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "Total: $" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.data.total), 1 /* TEXT */)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal ")], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
+  }, "Excel")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "Total: $" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.data.total), 1 /* TEXT */)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal ")], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
 
 /***/ }),
@@ -316,8 +369,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var customDatatable = function customDatatable(id) {
-  $("#".concat(id)).DataTable({
-    "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" + "<'table-responsive'tr>" + "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
+  var btnPrint = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  // Configuración básica de DataTables
+  var datatableConfig = {
     "oLanguage": {
       "oPaginate": {
         "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
@@ -332,8 +386,16 @@ var customDatatable = function customDatatable(id) {
     "lengthMenu": [5, 10, 20, 50],
     "pageLength": 10,
     "responsive": true,
-    "autoWidth": false
-  });
+    "autoWidth": true
+  };
+
+  // Agregar botón de impresión si se solicita
+  if (btnPrint) {
+    datatableConfig.buttons = ['print'];
+  }
+
+  // Inicializar DataTables con la configuración
+  $("#".concat(id)).DataTable(datatableConfig);
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (customDatatable);
 

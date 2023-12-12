@@ -46,7 +46,7 @@ class MenuComposer
             ],
             [
                 'nombreMenu' => 'Productos',
-                'url' => 'clientes/admin/campeonatos',
+                'url' => '/admin/products',
                 'itemsMenu' => [],
             ],
             [
@@ -56,18 +56,18 @@ class MenuComposer
             ],
             [
                 'nombreMenu' => 'Citas',
-                'url' => 'clientes/admin/campeonatos',
+                'url' => '/admin/appointments',
                 'itemsMenu' => [],
             ],
             [
                 'nombreMenu' => 'Notas de Venta',
-                'url' => 'clientes/admin/campeonatos',
+                'url' => '/admin/saleorders',
                 'itemsMenu' => [],
             ],
             [
                 'nombreMenu' => 'Reportes',
                 'itemsMenu' => array_filter([
-                    ['admin/reports/payments', 'Ventas'],
+                    ['admin/reports/sales', 'Ventas'],
                     ['admin/reports/payments', 'Pagos'],
                 ]),
             ],

@@ -53,11 +53,18 @@
                                 <input v-model="date_to" id="date_to" type="date" class="form-control"  required>
                             </div>
                         </div>
-                        <div class="col-lg-3  mb-5">
-                            <label for="name" class="text-white">Hasta</label>
-                            <div v-if="report_type && date_from && date_to " class="d-flex justify-content-start">
+
+                        <div v-if="date_from && date_to && user_id && report_type" class="col-lg-3  mb-5">
+                            <div   class="d-flex justify-content-start">
                                 <div class="seperator-header  mx-2  ">
-                                    <Link class="btn btn-info btn-lg float-end" @click="getFIlter">Procesar</Link>
+                                    <Link class="btn btn-info btn-lg float-end" @click="process">Procesar</Link>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-if="date_from && date_to && user_id && report_type" class="col-lg-3  mb-5">
+                            <div   class="d-flex justify-content-start">
+                                <div class="seperator-header  mx-2  ">
+                                    <Link class="btn btn-info btn-lg float-end" @click="exportToPdf">Generar pdf</Link>
                                 </div>
                             </div>
                         </div>
@@ -66,25 +73,38 @@
 	                <table border="1" id="payments" class="mt-5 table style-1 dt-table-hover non-hover datatable">
 	                    <thead>
 	                        <tr>
-	                            <th>ID</th>
-                                <th>Usuario</th>
-                                <th>Importe</th>
-	                            <th>Nota</th>
+	                            <th>FECHA</th>
+                                <th>PACIENTE</th>
+                                <th>PRIMERA VEZ</th>
+	                            <th>NOTA</th>
+	                            <th>CONCEPTO</th>
+	                            <th>CANTIDAD</th>
+	                            <th>PRECIO</th>
+	                            <th>DESCUENTO</th>
+	                            <th>SUBTOTAL</th>
+	                            <th>IVA</th>
 	                        </tr>
 	                    </thead>
                         <tbody>
-	                        <tr v-for="item in data.items" :key="item.id">
-	                            <td>{{ item.id }}</td>
-	                            <td>{{ item.user.name }}</td>
+	                        <tr v-for="item in data.sales" :key="item.id">
+	                            <td>{{ item.date }}</td>
+	                            <td>{{ item.patient.name }}</td>
+	                            <td>{{ item.first_time }}</td>
+	                            <td>{{ item.number }}</td>
+	                            <td>{{ item.product_name }}</td>
+	                            <td>{{ item.quantity }}</td>
+	                            <td>{{ item.price }}</td>
 	                            <td>{{ item.amount }}</td>
-	                            <td>{{ item.sale_order.number }}</td>
+	                            <td>{{ item.discount }}</td>
+	                            <td>{{ item.tax }}</td>
+
 
 	                        </tr>
 	                    </tbody>
 	                </table>
                     <div class="d-flex justify-content-between mt-4">
                         <div class="seperator-header  mx-2  ">
-                            <button class="btn btn-success btn-sm float-end" @click="print('payments')">Imprimir</button>
+                            <button v-if="date_from && date_to && user_id && report_type" class="btn btn-success btn-sm float-end" @click="print('payments')">Excel</button>
                         </div>
                         <h2>Total: ${{ data.total }}</h2>
                     </div>
@@ -111,6 +131,9 @@
     const user_id = ref()
     const date_from = ref(null)
     const date_to = ref(null)
+
+    const destination = ref(null)
+
     const reports = ref([
         {value:'A', text:'Ventas diarias por concepto'},
         {value:'B', text:'Ventas detalladas por usuario'},
@@ -127,11 +150,19 @@
         {value:5, text: 'CIRUGIA'},
 
     ])
-    const getFIlter = () => {
-        Inertia.get('/admin/reports/payments', {
+
+
+    const process = () => {
+
+        Inertia.get('/admin/reports/sales', {
             user_id: user_id.value,
             date_from: date_from.value,
             date_to: date_to.value,
+            report_type: report_type.value,
+            destination: destination.value,
+            business_unit_id: business_unit_id.value,
+            business_unit_id: business_unit_id.value,
+            destination: "screen",
         },{
             preserveState: true,
             replace: true
@@ -139,21 +170,51 @@
 
     }
 
-    const print = (nombreDiv) => {
-        var contenido= document.getElementById(nombreDiv).innerHTML;
-        var contenidoOriginal= document.body.innerHTML;
+    const exportToPdf = () => {
 
-        document.body.innerHTML = contenido;
+        const request = {
+            user_id: user_id.value,
+            date_from: date_from.value,
+            date_to: date_to.value,
+            report_type: report_type.value,
+            destination: destination.value,
+            business_unit_id: business_unit_id.value,
+            business_unit_id: business_unit_id.value,
+            destination: "pdf",
+        }
 
-        window.print();
-
-        document.body.innerHTML = contenidoOriginal;
+        axios
+            .post('/admin/reports/sales/generate',request,{responseType: 'blob'})
+            .then(function (response) {
+                let url = window.URL.createObjectURL(new Blob([response.data]));
+                let link = document.createElement('a')
+                link.href = url
+                link.setAttribute('download',  'Reporte de ventas.pdf');
+                document.body.appendChild(link)
+                link.click()
+            })
     }
 
+
+    // const print = (nombreDiv) => {
+    //     var contenido= document.getElementById(nombreDiv).innerHTML;
+    //     var contenidoOriginal= document.body.innerHTML;
+
+    //     document.body.innerHTML = contenido;
+
+    //     window.print();
+
+    //     document.body.innerHTML = contenidoOriginal;
+    // }
+
     onMounted(() => {
-        customDatatable('payments')
+        customDatatable('payments', true)
             user_id.value = props.request.user_id
             date_from.value = props.request.date_from
             date_to.value = props.request.date_to
+
+
+            report_type.value = props.request.report_type
+            business_unit_id.value = props.request.business_unit_id
     })
 </script>

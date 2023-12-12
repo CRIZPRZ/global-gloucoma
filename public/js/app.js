@@ -28755,6 +28755,46 @@ var map = {
 		"./resources/js/Pages/AppointmentTypes/Store.js",
 		"resources_js_Pages_AppointmentTypes_Store_js"
 	],
+	"./Appointments/Create": [
+		"./resources/js/Pages/Appointments/Create.vue",
+		"resources_js_Pages_Appointments_Create_vue"
+	],
+	"./Appointments/Create.vue": [
+		"./resources/js/Pages/Appointments/Create.vue",
+		"resources_js_Pages_Appointments_Create_vue"
+	],
+	"./Appointments/Edit": [
+		"./resources/js/Pages/Appointments/Edit.vue",
+		"resources_js_Pages_Appointments_Edit_vue"
+	],
+	"./Appointments/Edit.vue": [
+		"./resources/js/Pages/Appointments/Edit.vue",
+		"resources_js_Pages_Appointments_Edit_vue"
+	],
+	"./Appointments/Form": [
+		"./resources/js/Pages/Appointments/Form.vue",
+		"resources_js_Pages_Appointments_Form_vue"
+	],
+	"./Appointments/Form.vue": [
+		"./resources/js/Pages/Appointments/Form.vue",
+		"resources_js_Pages_Appointments_Form_vue"
+	],
+	"./Appointments/Index": [
+		"./resources/js/Pages/Appointments/Index.vue",
+		"resources_js_Pages_Appointments_Index_vue"
+	],
+	"./Appointments/Index.vue": [
+		"./resources/js/Pages/Appointments/Index.vue",
+		"resources_js_Pages_Appointments_Index_vue"
+	],
+	"./Appointments/Tracking/Index": [
+		"./resources/js/Pages/Appointments/Tracking/Index.vue",
+		"resources_js_Pages_Appointments_Tracking_Index_vue"
+	],
+	"./Appointments/Tracking/Index.vue": [
+		"./resources/js/Pages/Appointments/Tracking/Index.vue",
+		"resources_js_Pages_Appointments_Tracking_Index_vue"
+	],
 	"./Dashboard/Dashboard": [
 		"./resources/js/Pages/Dashboard/Dashboard.vue",
 		"resources_js_Pages_Dashboard_Dashboard_vue"
@@ -28794,6 +28834,38 @@ var map = {
 	"./Patients/Index.vue": [
 		"./resources/js/Pages/Patients/Index.vue",
 		"resources_js_Pages_Patients_Index_vue"
+	],
+	"./Products/Create": [
+		"./resources/js/Pages/Products/Create.vue",
+		"resources_js_Pages_Products_Create_vue"
+	],
+	"./Products/Create.vue": [
+		"./resources/js/Pages/Products/Create.vue",
+		"resources_js_Pages_Products_Create_vue"
+	],
+	"./Products/Edit": [
+		"./resources/js/Pages/Products/Edit.vue",
+		"resources_js_Pages_Products_Edit_vue"
+	],
+	"./Products/Edit.vue": [
+		"./resources/js/Pages/Products/Edit.vue",
+		"resources_js_Pages_Products_Edit_vue"
+	],
+	"./Products/Form": [
+		"./resources/js/Pages/Products/Form.vue",
+		"resources_js_Pages_Products_Form_vue"
+	],
+	"./Products/Form.vue": [
+		"./resources/js/Pages/Products/Form.vue",
+		"resources_js_Pages_Products_Form_vue"
+	],
+	"./Products/Index": [
+		"./resources/js/Pages/Products/Index.vue",
+		"resources_js_Pages_Products_Index_vue"
+	],
+	"./Products/Index.vue": [
+		"./resources/js/Pages/Products/Index.vue",
+		"resources_js_Pages_Products_Index_vue"
 	],
 	"./Reports/Payments/Index": [
 		"./resources/js/Pages/Reports/Payments/Index.vue",
@@ -36503,7 +36575,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_AppointmentTypes_Create_vue":1,"resources_js_Pages_AppointmentTypes_Edit_vue":1,"resources_js_Pages_AppointmentTypes_Form_vue":1,"resources_js_Pages_AppointmentTypes_Index_vue":1,"resources_js_Pages_AppointmentTypes_Store_js":1,"resources_js_Pages_Dashboard_Dashboard_vue":1,"resources_js_Pages_Patients_Create_vue":1,"resources_js_Pages_Patients_Edit_vue":1,"resources_js_Pages_Patients_Form_vue":1,"resources_js_Pages_Patients_Index_vue":1,"resources_js_Pages_Reports_Payments_Index_vue":1,"resources_js_Pages_Reports_Sales_Index_vue":1,"resources_js_Pages_Roles_Create_vue":1,"resources_js_Pages_Roles_Edit_vue":1,"resources_js_Pages_Roles_Form_vue":1,"resources_js_Pages_Roles_Index_vue":1,"resources_js_Pages_Server_Index_vue":1,"resources_js_Pages_Server_Store_js":1,"resources_js_Pages_Server_modals_Form_vue":1,"resources_js_Pages_Users_Create_vue":1,"resources_js_Pages_Users_Edit_vue":1,"resources_js_Pages_Users_Form_vue":1,"resources_js_Pages_Users_Index_vue":1,"resources_js_Pages_Welcome_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_AppointmentTypes_Create_vue":1,"resources_js_Pages_AppointmentTypes_Edit_vue":1,"resources_js_Pages_AppointmentTypes_Form_vue":1,"resources_js_Pages_AppointmentTypes_Index_vue":1,"resources_js_Pages_AppointmentTypes_Store_js":1,"resources_js_Pages_Appointments_Create_vue":1,"resources_js_Pages_Appointments_Edit_vue":1,"resources_js_Pages_Appointments_Form_vue":1,"resources_js_Pages_Appointments_Index_vue":1,"resources_js_Pages_Appointments_Tracking_Index_vue":1,"resources_js_Pages_Dashboard_Dashboard_vue":1,"resources_js_Pages_Patients_Create_vue":1,"resources_js_Pages_Patients_Edit_vue":1,"resources_js_Pages_Patients_Form_vue":1,"resources_js_Pages_Patients_Index_vue":1,"resources_js_Pages_Products_Create_vue":1,"resources_js_Pages_Products_Edit_vue":1,"resources_js_Pages_Products_Form_vue":1,"resources_js_Pages_Products_Index_vue":1,"resources_js_Pages_Reports_Payments_Index_vue":1,"resources_js_Pages_Reports_Sales_Index_vue":1,"resources_js_Pages_Roles_Create_vue":1,"resources_js_Pages_Roles_Edit_vue":1,"resources_js_Pages_Roles_Form_vue":1,"resources_js_Pages_Roles_Index_vue":1,"resources_js_Pages_Server_Index_vue":1,"resources_js_Pages_Server_Store_js":1,"resources_js_Pages_Server_modals_Form_vue":1,"resources_js_Pages_Users_Create_vue":1,"resources_js_Pages_Users_Edit_vue":1,"resources_js_Pages_Users_Form_vue":1,"resources_js_Pages_Users_Index_vue":1,"resources_js_Pages_Welcome_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

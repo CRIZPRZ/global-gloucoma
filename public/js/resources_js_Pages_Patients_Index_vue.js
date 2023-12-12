@@ -143,8 +143,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var customDatatable = function customDatatable(id) {
-  $("#".concat(id)).DataTable({
-    "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" + "<'table-responsive'tr>" + "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
+  var btnPrint = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  // Configuración básica de DataTables
+  var datatableConfig = {
     "oLanguage": {
       "oPaginate": {
         "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
@@ -159,8 +160,16 @@ var customDatatable = function customDatatable(id) {
     "lengthMenu": [5, 10, 20, 50],
     "pageLength": 10,
     "responsive": true,
-    "autoWidth": false
-  });
+    "autoWidth": true
+  };
+
+  // Agregar botón de impresión si se solicita
+  if (btnPrint) {
+    datatableConfig.buttons = ['print'];
+  }
+
+  // Inicializar DataTables con la configuración
+  $("#".concat(id)).DataTable(datatableConfig);
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (customDatatable);
 
