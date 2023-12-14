@@ -14,6 +14,7 @@ const customDatatable = (id, btnPrint = false) => {
         "pageLength": 10,
         "responsive": true,
         "autoWidth": true,
+
     };
 
     // Agregar botón de impresión si se solicita

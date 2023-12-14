@@ -35,24 +35,11 @@ class SaleOrderController extends Controller
 
     public function index()
     {
-//         $rowsPerPage = (request()->get('rowsPerPage') > 0) ? request()->get('rowsPerPage') : 0;
-//         $sort_by = isset(request()->get('sort_by')[0])?request()->get('sort_by')[0]: 'id';
-//         $descending = isset(request()->get('descending')[0]) ? request()->get('descending')[0]: 'true';
-//         $string_searched = (request()->get('search')) ? request()->get('search'): false;
+        $servers = ConfigDatabase::select('id','database')->get();
+        $patients = Patient::select('id','name')->get();
+        $branches = Branch::select('id','name')->get();
 
-//         if ('false' == $descending) {
-//             $orderby = 'asc';
-//         } elseif ('true' == $descending) {
-//             $orderby = 'desc';
-//         } elseif ('' == $descending) {
-//             $orderby = 'desc';
-//             $sort_by = 'id';
-//         }
-
-// //dd($string_searched);
-//         $sale_orders = SaleOrder::with('patient')->get();
-
-        return Inertia::render('SaleOrder/Index');
+        return Inertia::render('SaleOrder/Index', compact('servers', 'patients', 'branches'));
 
     }
 
@@ -78,13 +65,16 @@ class SaleOrderController extends Controller
      try{
          DB::beginTransaction();
          $user = User::find(Auth::user()->id);
-        $data['date'] = Carbon::now();
-        $data['number'] = $this->getNumber();
-        $data['branch_id'] = $user->branch_id;
-        $data['first_time'] = (!$data['first_time'] || $data['first_time'] == false? 0:1);
-        $data['created_by'] = Auth::user()->id;
-        $data['created_by_name'] = Auth::user()->email;
-        $sale_order = SaleOrder::create($data);
+            $data['date'] = Carbon::now();
+            $data['number'] = $this->getNumber();
+            $data['branch_id'] = $user->branch_id;
+            $data['first_time'] = (!$data['first_time'] || $data['first_time'] == false? 0:1);
+            $data['created_by'] = Auth::user()->id;
+            $data['created_by_name'] = Auth::user()->email;
+            $sale_order = SaleOrder::create($data);
+
+            // dd($sale_order);
+
         DB::commit();
         return $this->respondSuccess($sale_order->id);
      }catch(\Exception $e)
@@ -95,24 +85,28 @@ class SaleOrderController extends Controller
 
     }
 
-    public function show($id)
+    public function edit($id)
     {
 
         $this->recalculate($id);
         $sale_order = SaleOrder::with('patient:id,name', 'lines:id,sale_order_id,quantity,product_id,product_name,price,tax,discount,amount', 'payments')->find($id);
+
         $discounts = SystemDiscount::select('label','value')->get();
         $products = [];
-        // $products = Product::where('odoo_server', $sale_order->odoo_server)->get();
+        $products = Product::where('odoo_server', $sale_order->odoo_server)->get();
+
         if ($sale_order) {
             $patient_server = PatientServer::where('patient_id', $sale_order->patient_id)->where('database_id', $sale_order->odoo_server)->count();
             $sale_order->invoiceable = ($patient_server > 0) ? true : false;
             $sale_order->balance = $sale_order->balance();
         }
-            return $data = [
-                'sale_order' => $sale_order,
-                'discounts' => $discounts,
-                'products' => $products
-                ];
+        $data = [
+            'sale_order' => $sale_order,
+            'discounts' => $discounts,
+            'products' => $products
+        ];
+
+        return Inertia::render('SaleOrder/Edit', compact('data'));
     }
 
     public function saleOrderFormAppointment($id)

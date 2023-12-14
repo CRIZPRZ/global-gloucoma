@@ -10,15 +10,17 @@ use Illuminate\Support\Str;
 
 class SaleOrderDataTableController extends Controller
 {
-    public function getDataAjax(Request $request)
+    public function getDataAjax()
     {
-
-
         $sale_orders = SaleOrder::with('patient');
 
         return DataTables::of($sale_orders)
         ->addColumn('patient', function ($saleOrder) {
-            return Str::limit($saleOrder->patient->name, 30, '...');
+            if (is_null($saleOrder->patient)) {
+                return null;
+            }else{
+                return Str::limit($saleOrder->patient->name, 30, '...');
+            }
         })
         ->editColumn('odoo_sale_order_id', function ($saleOrder) {
 
@@ -41,7 +43,7 @@ class SaleOrderDataTableController extends Controller
         ->editColumn('acctions', function ($saleOrder) {
 
 
-            $elemento = "<i class='fa-solid fa-pen-to-square'></i>";
+            $elemento = "<a href='/admin/saleorders/". $saleOrder->id ."/edit'> <i class='fa-solid fa-pen-to-square'></i> </a>";
 
             return $elemento;
         })

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/ticket/{id}', [App\Http\Controllers\Admin\SaleOrderController::class, 'ticket'])->middleware(['auth']);
+
 Route::middleware(['auth'])->name('admin.')->group(function () {
 
     Route::get('dashboard', [App\Http\Controllers\Admin\Dashboard\DashboardController::class ,'index'])->name('dashboard');
@@ -15,8 +17,9 @@ Route::middleware(['auth'])->name('admin.')->group(function () {
     Route::resource('patients', App\Http\Controllers\Admin\PatientController::class);
     Route::resource('products', App\Http\Controllers\Admin\ProductsController::class);
     Route::get('/syncProducts', [ App\Http\Controllers\Admin\ProductsController::class, 'syncProducts']);
-
+    Route::resource('payments', App\Http\Controllers\Admin\PaymentController::class);
     Route::resource('saleorders', App\Http\Controllers\Admin\SaleOrderController::class);
+    Route::resource('saleordersLines', App\Http\Controllers\Admin\SaleOrderLineController::class);
     Route::get('saleordersAjax', [App\Http\Controllers\Admin\SaleOrderDataTableController::class, 'getDataAjax'])->name('saleOrders.getData');
     // Reports
     Route::resource('reports/payments', App\Http\Controllers\Admin\ReportPaymentController::class);
