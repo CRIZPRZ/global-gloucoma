@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\SaleOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
 
 class SaleOrderDataTableController extends Controller
 {
@@ -42,8 +44,13 @@ class SaleOrderDataTableController extends Controller
         })
         ->editColumn('acctions', function ($saleOrder) {
 
+            $role = Role::find(Auth::user()->role_id);
 
-            $elemento = "<a href='/admin/saleorders/". $saleOrder->id ."/edit'> <i class='fa-solid fa-pen-to-square'></i> </a>";
+            if ( $role->hasPermissionTo('create sales order') ) {
+                $elemento = "<a href='/admin/saleorders/". $saleOrder->id ."/edit'> <i class='fa-solid fa-pen-to-square'></i> </a>";
+            }else{
+                $elemento = null;
+            }
 
             return $elemento;
         })

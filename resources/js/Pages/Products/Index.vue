@@ -2,10 +2,10 @@
 	<div class="row  ">
 		<div class="col-md-12">
             <div class="d-flex justify-content-between mt-4">
-                <div class="seperator-header  mx-2  ">
+                <div v-if="can('create config products')" class="seperator-header  mx-2  ">
                     <button  class="btn btn-info btn-lg float-end" @click="syncProducts">SINCRONIZAR</button>
                 </div>
-                <div class="seperator-header  mx-2 ">
+                <div v-if="can('create config products')" class="seperator-header  mx-2 ">
                      <Link class="btn btn-success btn-lg float-end">Crear Producto</Link>
                 </div>
             </div>

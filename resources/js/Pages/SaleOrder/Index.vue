@@ -1,7 +1,7 @@
 <template>
 	<div class="row  ">
 		<div class="col-md-12">
-            <div class="d-flex justify-content-end">
+            <div v-if="can('create sales order')" class="d-flex justify-content-end">
                 <div class="seperator-header  mx-2  mt-3">
                      <a class="btn btn-success btn-lg float-end" data-bs-toggle="modal" data-bs-target="#modalCreate">Crear nota</a>
                 </div>

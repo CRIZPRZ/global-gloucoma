@@ -2,7 +2,7 @@
 	<div class="row  ">
 		<div class="col-md-12">
             <div class="d-flex justify-content-end">
-                <div class="seperator-header  mx-2  mt-3">
+                <div v-if="can('create config server')" class="seperator-header  mx-2  mt-3">
                      <a class="btn btn-success btn-lg float-end" href="#" @click="store.create">Crear Servidor</a>
                     <!-- <a class="btn btn-success btn-lg float-end" href="#"><i class="fa fa-plus" @click="openModal"></i>Crear Servidor</a> -->
                 </div>
@@ -31,10 +31,10 @@
 	                            <td>{{ server.database }}</td>
 	                        	<td class="text-center" style="font-size: 16px;">
 				                    <div class="action-btns">
-				                        <a @click="store.editItem(server)" href="#" class="action-btn btn-edit bs-tooltip me-2" data-toggle="tooltip" data-placement="top" title="Editar" >
+				                        <a v-if="can('update config server')" @click="store.editItem(server)" href="#" class="action-btn btn-edit bs-tooltip me-2" data-toggle="tooltip" data-placement="top" title="Editar" >
 				                            <i class="fa-solid fa-pen-to-square"></i>
 				                        </a>
-				                        <a @click="store.deleteItem(server.id)" class="action-btn btn-delete bs-tooltip" data-toggle="tooltip" data-placement="top" title="Eliminar">
+				                        <a v-if="can('destroy config server')" @click="store.deleteItem(server.id)" class="action-btn btn-delete bs-tooltip" data-toggle="tooltip" data-placement="top" title="Eliminar">
 				                            <i class="fa-solid fa-trash"></i>
 				                        </a>
 				                    </div>

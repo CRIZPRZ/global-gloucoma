@@ -5,7 +5,9 @@ namespace App\Http\ViewComposers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Spatie\Permission\Models\Role;
 
 class MenuComposer
 {
@@ -14,7 +16,9 @@ class MenuComposer
     public function compose(View $view)
     {
 
+
         $menu = $this->menu() ?? [];
+
 
         $menuBase = $this->menuBase();
         $menus = array_merge($menuBase, $menu);
@@ -27,53 +31,65 @@ class MenuComposer
             [
                 'nombreMenu' => 'Dashboard',
                 'url' => '/admin/dashboard',
-                'itemsMenu' => [ ]
+                'itemsMenu' => [ ],
+                'permission' => true,
             ],
         ];
     }
 
     private function menu(){
 
+        $role = Role::find(Auth::user()->role_id);
+
         $menus = [
             [
                 'nombreMenu' => 'Configuracion',
                 'itemsMenu' => array_filter([
-                    ['admin/servers', 'Servidores'],
-                    ['admin/appointmentsTypes', 'Citas'],
+
+                    $role->hasPermissionTo('read config server') ? ['admin/servers', 'Servidores'] : null,
+                    $role->hasPermissionTo('read config server') ? ['admin/appointmentsTypes', 'Citas'] : null,
                     ['admin/roles', 'Roles y permisos'],
-                    ['admin/users', 'Usuarios'],
+                    $role->hasPermissionTo('read config users') ? ['admin/users', 'Usuarios'] : null,
                 ]),
+                'permission' => true,
             ],
             [
                 'nombreMenu' => 'Productos',
                 'url' => '/admin/products',
                 'itemsMenu' => [],
+                'permission' => $role->hasPermissionTo('read products')
             ],
             [
                 'nombreMenu' => 'Pacientes',
                 'url' => '/admin/patients',
                 'itemsMenu' => [],
+                'permission' => $role->hasPermissionTo('read patient')
             ],
             [
                 'nombreMenu' => 'Citas',
                 'url' => '/admin/appointments',
                 'itemsMenu' => [],
+                'permission' => $role->hasPermissionTo('read quotes')
             ],
             [
                 'nombreMenu' => 'Notas de Venta',
                 'url' => '/admin/saleorders',
                 'itemsMenu' => [],
+                'permission' => $role->hasPermissionTo('read sales order')
             ],
             [
                 'nombreMenu' => 'Reportes',
                 'itemsMenu' => array_filter([
-                    ['admin/reports/sales', 'Ventas'],
-                    ['admin/reports/payments', 'Pagos'],
+                    $role->hasPermissionTo('read sale') ? ['admin/reports/sales', 'Ventas'] : null,
+                    $role->hasPermissionTo('read payments') ? ['admin/reports/payments', 'Pagos'] : null,
                 ]),
+                'permission' => $role->hasPermissionTo('read sale') || $role->hasPermissionTo('read payments'),
             ],
 
         ];
 
         return $menus;
     }
+
+
 }

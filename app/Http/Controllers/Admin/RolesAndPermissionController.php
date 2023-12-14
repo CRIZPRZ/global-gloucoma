@@ -97,12 +97,14 @@ class RolesAndPermissionController extends Controller
 
                 $role->update($request->all());
                 $permissionsAsync = $role->permissions->pluck('name');
+
                 $role->revokePermissionTo($permissionsAsync);
                 if (count($request->permissions_role) > 0 ):
                     $role->syncPermissions($request->permissions_role);
                 endif;
 
             DB::commit();
+
 
             return to_route('admin.roles.index');
 

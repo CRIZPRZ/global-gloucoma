@@ -4,6 +4,7 @@ import { createApp, h } from 'vue';
 import { createPinia } from 'pinia'
 import { app, plugin } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress'
+import { can } from './Utilities.js'
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
@@ -33,6 +34,7 @@ createApp({
     .mixin({
         methods: {
             route: route,
+            can: can,
         }
     })
     .mount(el);

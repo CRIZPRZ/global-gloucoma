@@ -1,8 +1,8 @@
 <template>
-	<div class="row  ">
+	<div class="row mt-4  ">
 		<div class="col-md-12">
             <div class="d-flex justify-content-end">
-                <div class="seperator-header  mx-2  mt-3">
+                <div v-if="can('create config quotes')"  class="seperator-header  mx-2  mt-3">
                      <Link class="btn btn-success btn-lg float-end" :href="route('admin.appointmentsTypes.create')">Crear tipo de cita</Link>
                 </div>
             </div>

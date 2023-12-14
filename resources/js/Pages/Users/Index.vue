@@ -2,7 +2,7 @@
 	<div class="row  ">
 		<div class="col-md-12">
             <div class="d-flex justify-content-end">
-                <div class="seperator-header  mx-2  mt-3">
+                <div v-if="can('create config users')"  class="seperator-header  mx-2  mt-3">
                      <Link class="btn btn-success btn-lg float-end" :href="route('admin.users.create')">Crear Usuario</Link>
                 </div>
             </div>
@@ -30,10 +30,10 @@
 	                            <td>{{ user?.branch?.name ?? 'Sin asignar' }}</td>
 	                        	<td class="text-center" style="font-size: 16px;">
 				                    <div class="action-btns">
-				                        <Link :href="route('admin.users.edit', user.id)" class="action-btn btn-edit bs-tooltip me-2" data-toggle="tooltip" data-placement="top" title="Editar" >
+				                        <Link v-if="can('update config users')" :href="route('admin.users.edit', user.id)" class="action-btn btn-edit bs-tooltip me-2" data-toggle="tooltip" data-placement="top" title="Editar" >
 				                            <i class="fa-solid fa-pen-to-square"></i>
 				                        </Link>
-				                        <a @click="store.deleteItem(user.id)" class="action-btn btn-delete bs-tooltip" data-toggle="tooltip" data-placement="top" title="Eliminar">
+				                        <a v-if="can('destroy config users')" @click="store.deleteItem(user.id)" class="action-btn btn-delete bs-tooltip" data-toggle="tooltip" data-placement="top" title="Eliminar">
 				                            <i class="fa-solid fa-trash"></i>
 				                        </a>
 				                    </div>

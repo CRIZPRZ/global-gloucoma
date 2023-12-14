@@ -2,7 +2,7 @@
 	<div class="row  ">
 		<div class="col-md-12">
             <div class="d-flex justify-content-end">
-                <div class="seperator-header  mx-2  mt-3">
+                <div v-if="can('create patient')" class="seperator-header  mx-2  mt-3">
                      <Link class="btn btn-success btn-lg float-end" :href="route('admin.patients.create')">Crear Paciente</Link>
                 </div>
             </div>
@@ -32,7 +32,7 @@
 	                            <td>{{ patient.server_count }}</td>
 	                        	<td class="text-center" style="font-size: 16px;">
 				                    <div class="action-btns">
-				                        <Link :href="route('admin.patients.edit', patient.id)" class="action-btn btn-edit bs-tooltip me-2" data-toggle="tooltip" data-placement="top" title="Editar" >
+				                        <Link v-if="can('update patient')" :href="route('admin.patients.edit', patient.id)" class="action-btn btn-edit bs-tooltip me-2" data-toggle="tooltip" data-placement="top" title="Editar" >
 				                            <i class="fa-solid fa-pen-to-square"></i>
 				                        </Link>
 				                        <!-- <a @click="store.deleteItem(patient.id)" class="action-btn btn-delete bs-tooltip" data-toggle="tooltip" data-placement="top" title="Eliminar">

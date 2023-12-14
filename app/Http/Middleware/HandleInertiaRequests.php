@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Spatie\Permission\Models\Role;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -36,11 +37,18 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $rol_name = $request->user()->roles->pluck('name')[0] == null;
+
+        $role = Role::where('name',$rol_name)->first();
+
+        // Obtén los permisos asociados con el rol
+        $permissions = $role->permissions->pluck('name');
+
         return array_merge(parent::share($request), [
             'user' => $request->user(),
 
             'user.roles' => $request->user() ? $request->user()->roles->pluck('name') : [],
-            'user.permissions' => $request->user() ? $request->user()->getDirectPermissions()->pluck('name') : [],
+            'user.permissions' => $permissions,
 
             'currentRouteStaticPrefix' => $request->route()->getCompiled()->getStaticPrefix(),
         ]);

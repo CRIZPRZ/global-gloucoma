@@ -19212,6 +19212,29 @@ const replacer = (_key, val) => {
 
 /***/ }),
 
+/***/ "./resources/js/Utilities.js":
+/*!***********************************!*\
+  !*** ./resources/js/Utilities.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   can: () => (/* binding */ can),
+/* harmony export */   role: () => (/* binding */ role)
+/* harmony export */ });
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+
+function can(permission) {
+  return _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.page.props.user.permissions.includes(permission);
+}
+function role(role) {
+  return _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.page.props.user.roles.includes(role);
+}
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -19221,11 +19244,12 @@ const replacer = (_key, val) => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var pinia__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! pinia */ "./node_modules/pinia/dist/pinia.mjs");
+/* harmony import */ var pinia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! pinia */ "./node_modules/pinia/dist/pinia.mjs");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/progress */ "./node_modules/@inertiajs/progress/dist/index.js");
-/* harmony import */ var vue_toastification__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-toastification */ "./node_modules/vue-toastification/dist/index.mjs");
-/* harmony import */ var vue_toastification_dist_index_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-toastification/dist/index.css */ "./node_modules/vue-toastification/dist/index.css");
+/* harmony import */ var _Utilities_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Utilities.js */ "./resources/js/Utilities.js");
+/* harmony import */ var vue_toastification__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-toastification */ "./node_modules/vue-toastification/dist/index.mjs");
+/* harmony import */ var vue_toastification_dist_index_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-toastification/dist/index.css */ "./node_modules/vue-toastification/dist/index.css");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -19233,7 +19257,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-var pinia = (0,pinia__WEBPACK_IMPORTED_MODULE_5__.createPinia)();
+
+var pinia = (0,pinia__WEBPACK_IMPORTED_MODULE_6__.createPinia)();
 var options = {
   // You can set your default options here
 };
@@ -19255,9 +19280,10 @@ var el = document.getElementById('app');
       }
     });
   }
-}).use(_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.plugin).use(pinia).use(vue_toastification__WEBPACK_IMPORTED_MODULE_3__["default"], options).mixin({
+}).use(_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.plugin).use(pinia).use(vue_toastification__WEBPACK_IMPORTED_MODULE_4__["default"], options).mixin({
   methods: {
-    route: route
+    route: route,
+    can: _Utilities_js__WEBPACK_IMPORTED_MODULE_3__.can
   }
 }).mount(el);
 
@@ -28835,30 +28861,6 @@ var map = {
 		"./resources/js/Pages/Patients/Index.vue",
 		"resources_js_Pages_Patients_Index_vue"
 	],
-	"./Products/Create": [
-		"./resources/js/Pages/Products/Create.vue",
-		"resources_js_Pages_Products_Create_vue"
-	],
-	"./Products/Create.vue": [
-		"./resources/js/Pages/Products/Create.vue",
-		"resources_js_Pages_Products_Create_vue"
-	],
-	"./Products/Edit": [
-		"./resources/js/Pages/Products/Edit.vue",
-		"resources_js_Pages_Products_Edit_vue"
-	],
-	"./Products/Edit.vue": [
-		"./resources/js/Pages/Products/Edit.vue",
-		"resources_js_Pages_Products_Edit_vue"
-	],
-	"./Products/Form": [
-		"./resources/js/Pages/Products/Form.vue",
-		"resources_js_Pages_Products_Form_vue"
-	],
-	"./Products/Form.vue": [
-		"./resources/js/Pages/Products/Form.vue",
-		"resources_js_Pages_Products_Form_vue"
-	],
 	"./Products/Index": [
 		"./resources/js/Pages/Products/Index.vue",
 		"resources_js_Pages_Products_Index_vue"
@@ -36599,7 +36601,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_AppointmentTypes_Create_vue":1,"resources_js_Pages_AppointmentTypes_Edit_vue":1,"resources_js_Pages_AppointmentTypes_Form_vue":1,"resources_js_Pages_AppointmentTypes_Index_vue":1,"resources_js_Pages_AppointmentTypes_Store_js":1,"resources_js_Pages_Appointments_Create_vue":1,"resources_js_Pages_Appointments_Edit_vue":1,"resources_js_Pages_Appointments_Form_vue":1,"resources_js_Pages_Appointments_Index_vue":1,"resources_js_Pages_Appointments_Tracking_Index_vue":1,"resources_js_Pages_Dashboard_Dashboard_vue":1,"resources_js_Pages_Patients_Create_vue":1,"resources_js_Pages_Patients_Edit_vue":1,"resources_js_Pages_Patients_Form_vue":1,"resources_js_Pages_Patients_Index_vue":1,"resources_js_Pages_Products_Create_vue":1,"resources_js_Pages_Products_Edit_vue":1,"resources_js_Pages_Products_Form_vue":1,"resources_js_Pages_Products_Index_vue":1,"resources_js_Pages_Reports_Payments_Index_vue":1,"resources_js_Pages_Reports_Sales_Index_vue":1,"resources_js_Pages_Roles_Create_vue":1,"resources_js_Pages_Roles_Edit_vue":1,"resources_js_Pages_Roles_Form_vue":1,"resources_js_Pages_Roles_Index_vue":1,"resources_js_Pages_SaleOrder_Edit_vue":1,"resources_js_Pages_SaleOrder_Index_vue":1,"resources_js_Pages_SaleOrder_Payments_vue":1,"resources_js_Pages_Server_Index_vue":1,"resources_js_Pages_Server_Store_js":1,"resources_js_Pages_Server_modals_Form_vue":1,"resources_js_Pages_Users_Create_vue":1,"resources_js_Pages_Users_Edit_vue":1,"resources_js_Pages_Users_Form_vue":1,"resources_js_Pages_Users_Index_vue":1,"resources_js_Pages_Welcome_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_AppointmentTypes_Create_vue":1,"resources_js_Pages_AppointmentTypes_Edit_vue":1,"resources_js_Pages_AppointmentTypes_Form_vue":1,"resources_js_Pages_AppointmentTypes_Index_vue":1,"resources_js_Pages_AppointmentTypes_Store_js":1,"resources_js_Pages_Appointments_Create_vue":1,"resources_js_Pages_Appointments_Edit_vue":1,"resources_js_Pages_Appointments_Form_vue":1,"resources_js_Pages_Appointments_Index_vue":1,"resources_js_Pages_Appointments_Tracking_Index_vue":1,"resources_js_Pages_Dashboard_Dashboard_vue":1,"resources_js_Pages_Patients_Create_vue":1,"resources_js_Pages_Patients_Edit_vue":1,"resources_js_Pages_Patients_Form_vue":1,"resources_js_Pages_Patients_Index_vue":1,"resources_js_Pages_Products_Index_vue":1,"resources_js_Pages_Reports_Payments_Index_vue":1,"resources_js_Pages_Reports_Sales_Index_vue":1,"resources_js_Pages_Roles_Create_vue":1,"resources_js_Pages_Roles_Edit_vue":1,"resources_js_Pages_Roles_Form_vue":1,"resources_js_Pages_Roles_Index_vue":1,"resources_js_Pages_SaleOrder_Edit_vue":1,"resources_js_Pages_SaleOrder_Index_vue":1,"resources_js_Pages_SaleOrder_Payments_vue":1,"resources_js_Pages_Server_Index_vue":1,"resources_js_Pages_Server_Store_js":1,"resources_js_Pages_Server_modals_Form_vue":1,"resources_js_Pages_Users_Create_vue":1,"resources_js_Pages_Users_Edit_vue":1,"resources_js_Pages_Users_Form_vue":1,"resources_js_Pages_Users_Index_vue":1,"resources_js_Pages_Welcome_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
