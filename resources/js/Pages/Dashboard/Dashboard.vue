@@ -1,7 +1,6 @@
 <template>
 
 
-{{ $page.props.user }}
 	<div class="row mt-5">
 	    <div class="col-lg-12">
 	        <div class="statbox widget box box-shadow">

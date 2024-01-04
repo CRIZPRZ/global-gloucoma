@@ -37,12 +37,28 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        $rol_name = $request->user()->roles->pluck('name')[0] == null;
+        if ( !is_null($request->user())) {
+            if(count($request->user()->roles) > 0) {
 
-        $role = Role::where('name',$rol_name)->first();
+                $rol_name = $request->user()->roles->pluck('name')[0] == null;
+            }else{
+                $rol_name = null;
+            }
+            $role = Role::where('name',$rol_name)->first();
 
-        // Obtén los permisos asociados con el rol
-        $permissions = $role->permissions->pluck('name');
+            // Obtén los permisos asociados con el rol
+            if( !is_null($role) ){
+                $permissions = $role->permissions->pluck('name');
+            }else{
+                $permissions = [];
+            }
+        }else{
+            $rol_name = null;
+            $role = null;
+            $permissions = [];
+        }
+
+
 
         return array_merge(parent::share($request), [
             'user' => $request->user(),
