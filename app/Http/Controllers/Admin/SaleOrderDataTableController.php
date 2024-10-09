@@ -46,7 +46,7 @@ class SaleOrderDataTableController extends Controller
 
             $role = Role::find(Auth::user()->role_id);
 
-            if ( $role->hasPermissionTo('create sales order') ) {
+            if ( $role->hasPermissionTo('update sales notes') ) {
                 $elemento = "<a href='/admin/saleorders/". $saleOrder->id ."/edit'> <i class='fa-solid fa-pen-to-square'></i> </a>";
             }else{
                 $elemento = null;

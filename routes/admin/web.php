@@ -40,5 +40,9 @@ Route::middleware(['auth'])->name('admin.')->group(function () {
     Route::post('/appointmentsTracing/prescriptionitem/delete/{id}', [App\Http\Controllers\Admin\AppointmentsController::class, 'prescritpionItemDelete']);
     Route::post('/appointmentsTracing/updateNotes/{id}', [App\Http\Controllers\Admin\AppointmentsController::class, 'updateNotes']);
 
+
+    Route::get('permiso', function($permiso){
+        dd($permiso);
+    });
 });
 // asd

@@ -81,7 +81,8 @@ class MenuComposer
                     'nombreMenu' => 'Notas de Venta',
                     'url' => '/admin/saleorders',
                     'itemsMenu' => [],
-                    'permission' => $role->hasPermissionTo('read sales order')
+                    'permission' => $role->hasPermissionTo('read sales notes')
+                    // 'permission' => true
                 ],
                 [
                     'nombreMenu' => 'Reportes',

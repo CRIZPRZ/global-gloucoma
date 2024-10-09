@@ -18,3 +18,8 @@ use Inertia\Inertia;
 Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'authenticate'])->name('login.authenticate');
 Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
+
+Route::get('permiso', function($permiso){
+    dd($permiso);
+});
